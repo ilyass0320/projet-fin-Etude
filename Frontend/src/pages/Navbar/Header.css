@@ -1,0 +1,41 @@
+.logHover:hover {
+    background-color: #dc2626;
+    border-color: #dc2626;
+}
+
+.logHover1:hover {
+
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.hoverStore:hover {
+    color: orange;
+}
+
+.hover-underline {
+    position: relative;
+    display: inline-block;
+}
+
+.hover-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background-color: gray;
+
+    /* gris foncé */
+    transition: width 0.6s ease;
+}
+
+.hover-underline:hover {
+    color: gray;
+    /* gris foncé */
+}
+
+.hover-underline:hover::after {
+    width: 100%;
+}

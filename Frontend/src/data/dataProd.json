@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "img": "/images/peugeot-208-removebg-preview.png",
+        "vehicule": "Voiture",
+        "Marque": "Peugeot",
+        "img_Marque": "/images/Peugeot_logo.png",
+        "model": "208",
+        "prix": 195900,
+        "description": "La PEUGEOT 208, citadine élégante et dynamique, séduit le marché marocain par son design moderne et ses performances remarquables. Dotée de moteurs essence et diesel, elle offre un excellent rapport performance-consommation, idéal pour les déplacements urbains et ruraux."
+    },
+    {
+        "id": 2,
+        "img": "/images/2019_TMAX530_02-680x507-removebg-preview.png",
+        "vehicule": "moto",
+        "Marque": "Yamaha",
+        "img_Marque": "/images/yamaha_logoo.png",
+        "model": "T-MAX 530",
+        "prix": 50900,
+        "description": "Le T Max 530 est un scooter emblématique qui a su conquérir le cœur des amateurs de deux-roues. Connu pour sa combinaison de puissance, de confort et de technologie, ce modèle de Yamaha s’est imposé comme une référence sur le marché des scooters sportifs"
+    },
+    {
+        "id": 3,
+        "img": "/images/tranceXGiant-removebg-preview.png",
+        "vehicule": "velo",
+        "Marque": "giant",
+        "img_Marque": "/images/Giant_lg.png",
+        "model": "trance X",
+        "prix": 30000,
+        "description": "Des roues en 29, des suspensions fluides, un cadre à géométrie évolutive et un moteur surpuissant… le Giant TRANCE X E+ PRO 29 fait une entrée fracassante dans le monde du VTT électrique ! Ce nouveau VTTAE s’adapte à tous les terrains et vous promet encore plus de liberté et de plaisir."
+    }
+]

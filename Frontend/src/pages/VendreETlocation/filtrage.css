@@ -1,0 +1,28 @@
+.hoverFliButton:hover {
+    background-color: #182237;
+
+    /* Couleur de fond sombre */
+    color: white;
+    /* Couleur du texte blanche */
+    padding: 0.5rem 1rem;
+    /* Espacement interne */
+    border-color: azure;
+
+    border-radius: 1rem;
+    /* Bords arrondis */
+    transition: background-color 0.3s ease;
+    /* Transition pour l'effet de survol */
+}
+
+.hoverDetaButton:hover {
+    background-color: #141c2b;
+    /* Couleur de fond sombre */
+    color: white;
+    /* Couleur du texte blanche */
+    padding: 0.5rem 1rem;
+    /* Espacement interne */
+    border-radius: 1rem;
+    /* Bords arrondis */
+    transition: background-color 0.3s ease;
+    /* Transition pour l'effet de survol */
+}

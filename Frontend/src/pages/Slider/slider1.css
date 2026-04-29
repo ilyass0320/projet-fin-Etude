@@ -1,0 +1,24 @@
+  @keyframes typing {
+      0% {
+          width: 0%;
+          visibility: hidden;
+      }
+
+      100% {
+          width: 100%;
+      }
+  }
+
+  @keyframes blink {
+      50% {
+          border-color: transparent;
+      }
+
+      100% {
+          border-color: rgb(187, 253, 255);
+      }
+  }
+
+  .animate-typing {
+      animation: typing 2s steps(20) infinite alternate, blink 0.9s infinite;
+  }

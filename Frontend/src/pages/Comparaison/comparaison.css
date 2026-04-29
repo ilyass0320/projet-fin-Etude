@@ -1,0 +1,16 @@
+.aniHover:hover {
+    background: #0b0a2bfe;
+    color: white;
+}
+
+.hoverRetiComp:hover {
+    background-color: rgb(223, 102, 102);
+}
+
+.hoverAjouComp:hover {
+    background-color: hsl(231, 66%, 21%);
+}
+
+.hoverMode:hover {
+    background-color: gray;
+}

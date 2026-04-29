@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "img": "/images/showCars1.jpg",
+        "titre": "Louez ou achetez le véhicule de vos rêves",
+        "description": "Découvrez le frisson de conduire la voiture de vos rêves. Parcourez nos options de location ou achat et trouvez le véhicule parfait pour votre prochaine aventure ou occasion spéciale",
+        "link": "/location"
+    },
+    {
+        "id": 2,
+        "img": "/images/Showbycicle.jpg",
+        "titre": "Comparaison de véhicules sans effort",
+        "description": "Comparaison de véhicules sans effort Comparez différents modèles côte à côte avec notre outil de comparaison facile à utiliser. Prenez des décisions éclairées et trouvez le véhicule qui correspond parfaitement à vos besoins et préférences",
+        "link": "/comparaison"
+    },
+    {
+        "id": 3,
+        "img": "/images/AccessoiresMoto.jpg",
+        "titre": "Tout pour équiper votre véhicule",
+        "description": "Équipez votre véhicule avec style et performance ! Découvrez une gamme exceptionnelle d'accessoires conçus pour améliorer votre confort, votre sécurité et votre plaisir de conduite. Transformez chaque trajet en une expérience unique avec nos produits de qualité..",
+        "link": "/composants"
+    }
+]

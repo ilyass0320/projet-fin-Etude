@@ -1,0 +1,47 @@
+  @keyframes typing {
+      0% {
+          width: 0%;
+          visibility: hidden;
+      }
+
+      100% {
+          width: 100%;
+      }
+  }
+
+  @keyframes blink {
+      50% {
+          border-color: transparent;
+      }
+
+      100% {
+          border-color: white;
+      }
+  }
+
+  .animate-typing {
+      animation: typing 2s steps(20) infinite alternate, blink 0.7s infinite;
+  }
+
+  .animate-typing-once {
+      animation: typing 2s steps(20) forwards, blink 0.7s infinite;
+  }
+
+  .hoverSup:hover {
+      background-color: rgb(210, 68, 68);
+  }
+
+  .hoverMod:hover {
+      background-color: rgb(77, 218, 77);
+  }
+
+  .hoverAJ:hover {
+      background-color: rgb(17, 17, 38);
+      font-family: 'Times New Roman', Times, serif;
+  }
+
+  .hoVerAnal:hover {
+      border-color: rgb(0, 0, 193);
+      transform: scale(1.01);
+      transition: all 0.9s ease;
+  }

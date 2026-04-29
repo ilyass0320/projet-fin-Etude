@@ -1,0 +1,55 @@
+[
+    [
+        {
+            "id": 1,
+            "marque": "Toyota",
+            "modele": "Corolla",
+            "annee": 2020,
+            "transmission": "automatique",
+            "kilometrage": "15000km",
+            "cylindree": "1.8L",
+            "puissance": "139ch",
+            "nbPortes": 4,
+            "nbPlaces": 5,
+            "consommation": "6.5L/100km",
+            "Longueur": "4.63m",
+            "Largeur": "1.78m",
+            "Hauteur": "1.43m",
+            "climatisation": true,
+            "System-audio": "Bluetooth, USB",
+            "sièges-chauffants": false,
+            "materiau-sieges": "tissu",
+            "Connectivité": "Apple CarPlay, Android Auto",
+            "nbAirbags": 6,
+            "System-freinage": "ABS, EBD",
+            "controle-electronique-stabilite": true,
+            "camera-recul": true,
+            "couleur": "bleu",
+            "couleurs": [
+                {
+                    "id": 1,
+                    "nom": "bleu",
+                    "colorVehicule": "#0000FF"
+                }
+            ],
+            "carburant": "essence",
+            "Poids": "1300kg",
+            "Prix_vente": "20000$",
+            "Prix_location": "150$/jour",
+            "image": "https://example.com/images/toyota_corolla.jpg",
+            "imagesDetails": [
+                {
+                    "id": 1,
+                    "imageDetail": "https://example.com/images/toyota_corolla_1.jpg"
+                },
+                {
+                    "id": 2,
+                    "imageDetail": "https://example.com/images/toyota_corolla_2.jpg"
+                }
+            ],
+            "disponibilite": true,
+            "Etat": "neuf"
+        },
+        {}
+    ]
+]
