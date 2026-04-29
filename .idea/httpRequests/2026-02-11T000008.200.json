@@ -1,0 +1,18 @@
+{
+  "nom": null,
+  "prenom": null,
+  "email": null,
+  "genre": null,
+  "telephone": null,
+  "address": null,
+  "password": null,
+  "ConfirmPassword": null,
+  "role": null,
+  "error": "Email ou mot de passe incorrect",
+  "message": null,
+  "admin": null,
+  "listAdmin": null,
+  "nomRole": null,
+  "token": null,
+  "refresh": null
+}
