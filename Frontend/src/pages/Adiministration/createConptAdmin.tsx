@@ -20,7 +20,7 @@ const CreateConptAdmin = () => {
         const token = localStorage.getItem("adminToken");
         const isLoggedIn = localStorage.getItem("isAdminLoggedIn") === "true";
         if (token && isLoggedIn) {
-            navigate("/admin/dashboard");
+            navigate("/Admin");
         }
     }, [navigate]);
 

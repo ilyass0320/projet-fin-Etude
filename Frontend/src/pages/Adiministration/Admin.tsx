@@ -16,7 +16,7 @@ export default function Admin() {
         const token = localStorage.getItem("adminToken");
         const isLoggedIn = localStorage.getItem("isAdminLoggedIn") === "true";
         if (token && isLoggedIn) {
-            navigate("/admin/dashboard");
+            navigate("/Admin");
         }
     }, [navigate]);
 
@@ -47,7 +47,7 @@ export default function Admin() {
             localStorage.setItem("admin", JSON.stringify(data.admin));
 
             // ✅ Rediriger vers le dashboard
-            navigate("/admin/dashboard");
+            navigate("/Admin");
 
         } catch (err: any) {
             console.error("Erreur login admin :", err);

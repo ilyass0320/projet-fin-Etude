@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import dataProd from "../../data/dataProdDetail.json";
 import { Link, useNavigate } from "react-router-dom";
-import { CiHeart } from "react-icons/ci";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import "./filtrage.css";
@@ -50,9 +49,6 @@ const Filtrage = () => {
         ? (selectedTypeData?.elements as Vehicule[])
         : [];
 
-    const viderSelection = () => {
-        setVoituresSelectionnees([]);
-    };
     // Vérifier conflit avec une réservation
     const getReservationConflit = (vehicule: Vehicule) => {
         if (!dateDebut || !dateFin || !vehicule.reservations) return null;
@@ -71,12 +67,31 @@ const Filtrage = () => {
         return null;
     };
 
+    // Reset filtres dépendants quand la transaction change
+    useEffect(() => {
+        setSelectedType("");
+        setSelectedMarque("");
+        setSelectedModel("");
+        setSelectedCarburant("");
+    }, [selectedTransaction]);
+
+    // Reset marque/modele/carburant quand le type change
     useEffect(() => {
         setSelectedMarque("");
         setSelectedModel("");
         setSelectedCarburant("");
     }, [selectedType]);
 
+    // Reset modele/carburant quand la marque change
+    useEffect(() => {
+        setSelectedModel("");
+        setSelectedCarburant("");
+    }, [selectedMarque]);
+
+    // Reset carburant quand le modele change
+    useEffect(() => {
+        setSelectedCarburant("");
+    }, [selectedModel]);
 
 
     const renderCard = (el: Vehicule, type: string, index: number) => {
@@ -90,11 +105,9 @@ const Filtrage = () => {
         const annee = getField(el, type, "annee");
         const transaction = getField(el, type, "transaction");
         const Kilometrage = getField(el, type, "kilometrage");
-        // const transmission = getField(el, type, "transmission");
-
+        const transmission = getField(el, type, "transmission");
 
         const conflit = getReservationConflit(el);
-
 
         return (
             <div key={id} className="p-1 mb-4 border rounded-md shadow-xl">
@@ -122,11 +135,18 @@ const Filtrage = () => {
                         <h2>{carburant || "type-carburant"}</h2>
                     </div>
                     <span><GoDotFill /></span>
-
                     <div>
                         <h2>{Kilometrage || "no-kilometrage"}</h2>
                     </div>
                 </div>
+
+                {/* Affichage conflit de réservation */}
+                {conflit && (
+                    <div className="mt-2 p-2 bg-red-100 border border-red-400 rounded-xl text-red-700 text-sm">
+                        ⚠️ Déjà réservé du <strong>{conflit.debut}</strong> au <strong>{conflit.fin}</strong>
+                    </div>
+                )}
+
                 <div className="flex flex-row justify-between w-full gap-2 mt-3">
                     <button className="border border-white shadow-lg bg-gray-900 font-bold text-white p-2 rounded-xl w-1/2 hover:bg-gray-100">
                         <Link to={`/details/${type}/${marque}/${model}/${id}`}>Découvrir</Link>
@@ -149,14 +169,16 @@ const Filtrage = () => {
                 </div>
             </div>
         );
-    }
+    };
 
     const results = filteredElements
         .filter((el) => {
             const marque = getField(el, selectedType, "Marque") || getField(el, selectedType, "marque");
             const modele = getField(el, selectedType, "model") || getField(el, selectedType, "modele");
             const carburant = getField(el, selectedType, "carburant");
+            const transaction = getField(el, selectedType, "transaction"); // ✅ Corrigé
             return (
+                (selectedTransaction ? transaction === selectedTransaction : true) &&
                 (selectedMarque ? marque === selectedMarque : true) &&
                 (selectedModel ? modele === selectedModel : true) &&
                 (selectedCarburant ? carburant === selectedCarburant : true)
@@ -165,19 +187,62 @@ const Filtrage = () => {
         .map((el, index) => renderCard(el, selectedType, index));
 
     const allVehicles: Vehicule[] = dataProd[0].vehicule.flatMap((v: Vehicule) => v.elements || []);
+
+    // Grouper tous les véhicules par transaction
+    const allTransactions: string[] = [
+        ...new Set(
+            dataProd[0].vehicule.flatMap((v) =>
+                (v.elements || []).map((el: Vehicule) => el.transaction)
+            )
+        ),
+    ].filter(Boolean);
+
+    // Pour chaque véhicule, retrouver son type (voitures / motors / velos)
+    const getTypeForElement = (el: Vehicule): string => {
+        for (const v of dataProd[0].vehicule) {
+            if ((v.elements || []).some((e: Vehicule) => e === el)) {
+                return v.name;
+            }
+        }
+        return "voitures";
+    };
+
     return (
         <div className="m-8 mt-[100px] flex flex-col items-center space-x-4">
             <h1 className="font-extrabold text-4xl text-gray-900">Trouvez votre Véhicule</h1>
 
             {/* Filtres */}
             <div className="space-y-4 grid grid-cols-5 border gap-10 p-9 rounded-xl bg-gray-100 opacity-90" style={{ boxShadow: "#A52A2A" }}>
-                {/* Type */}
+
+                {/* Transaction */}
+                <div>
+                    <label className="block font-semibold mb-1">Transaction</label>
+                    <select
+                        value={selectedTransaction}
+                        onChange={(e) => setSelectedTransaction(e.target.value)}
+                        className="w-full border border-gray-300 rounded-xl px-3 py-2 bg-gray-900 text-white"
+                    >
+                        <option value="">Type de Transaction</option>
+                        {[...new Set(
+                            dataProd?.[0]?.vehicule.flatMap(v =>
+                                v.elements.map(el => el.transaction)
+                            )
+                        )].map((tran, index) => (
+                            <option key={index} value={tran}>
+                                {tran}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
+                {/* Type de véhicule */}
                 <div>
                     <label className="block font-semibold mb-1">Véhicule</label>
                     <select
                         value={selectedType}
                         onChange={(e) => setSelectedType(e.target.value)}
                         className="w-full border border-gray-300 rounded-xl px-3 py-2 bg-gray-900 text-white"
+                        disabled={!selectedTransaction}
                     >
                         <option value="">Sélectionner un type</option>
                         {dataProd[0].vehicule.map((v) => (
@@ -200,6 +265,11 @@ const Filtrage = () => {
                         <option value="">Sélectionner une marque</option>
                         {[...new Set(
                             filteredElements
+                                .filter((el) => {
+                                    // ✅ Filtrer par transaction dès la marque
+                                    const transaction = getField(el, selectedType, "transaction");
+                                    return selectedTransaction ? transaction === selectedTransaction : true;
+                                })
                                 .map((el) => getField(el, selectedType, "Marque") || getField(el, selectedType, "marque"))
                                 .filter(Boolean)
                         )].map((marque, index) => (
@@ -221,7 +291,8 @@ const Filtrage = () => {
                         {filteredElements
                             .filter((el) => {
                                 const marque = getField(el, selectedType, "Marque") || getField(el, selectedType, "marque");
-                                return marque === selectedMarque;
+                                const transaction = getField(el, selectedType, "transaction"); // ✅ Corrigé
+                                return marque === selectedMarque && transaction === selectedTransaction;
                             })
                             .map((el, index) => {
                                 const modele = getField(el, selectedType, "model") || getField(el, selectedType, "modele");
@@ -261,81 +332,141 @@ const Filtrage = () => {
                     </select>
                 </div>
 
-                {/* Transaction */}
-                <div>
-                    <label className="block font-semibold mb-1">Transaction</label>
-                    <select
-                        value={selectedTransaction}
-                        onChange={(e) => setSelectedTransaction(e.target.value)}
-                        className="w-full border border-gray-300 rounded-xl px-3 py-2 bg-gray-900 text-white"
-                        disabled={!selectedModel}
-                    >
-                        <option value="">Type du Transaction</option>
-                        {filteredElements
-                            .filter((el) => {
-                                const marque = getField(el, selectedType, "Marque") || getField(el, selectedType, "marque");
-                                const modele = getField(el, selectedType, "model") || getField(el, selectedType, "modele");
-                                const carburant = getField(el, selectedType, "carburant");
-                                return marque === selectedMarque && modele === selectedModel && carburant === selectedCarburant;
-                            })
-                            .map((el, index) => {
-                                const transaction = getField(el, selectedType, "transaction");
-                                return (
-                                    <option key={index} value={transaction}>
-                                        {transaction || "Non défini"}
-                                    </option>
-                                );
-                            })}
-                    </select>
-                </div>
-                {
-                    selectedTransaction === "location" && (
-                        <div className="flex flex-row gap-10 mt-2">
-                            <div>
-                                <label className="block font-semibold mb-1 ">Date début</label>
-                                <input
-                                    type="date"
-                                    value={dateDebut}
-                                    onChange={(e) => setDateDebut(e.target.value)}
-                                    className="w-full border border-gray-300 rounded-xl px-3 py-2 bg-gray-900 text-white"
-                                />
-                            </div>
-                            <div>
-                                <label className="block font-semibold mb-1 ">Date fin</label>
-                                <input
-                                    type="date"
-                                    value={dateFin}
-                                    onChange={(e) => setDateFin(e.target.value)}
-                                    className="w-full border border-gray-300 rounded-xl px-3 py-2 bg-gray-900 text-white"
-                                />
-                            </div>
+                {/* Dates location */}
+                {selectedTransaction === "location" && (
+                    <div className="col-span-5 flex flex-row gap-10 mt-2">
+                        <div>
+                            <label className="block font-semibold mb-1">Date début</label>
+                            <input
+                                type="date"
+                                value={dateDebut}
+                                onChange={(e) => setDateDebut(e.target.value)}
+                                className="w-full border border-gray-300 rounded-xl px-3 py-2 bg-gray-900 text-white"
+                            />
                         </div>
-                    )
-                }
+                        <div>
+                            <label className="block font-semibold mb-1">Date fin</label>
+                            <input
+                                type="date"
+                                value={dateFin}
+                                onChange={(e) => setDateFin(e.target.value)}
+                                className="w-full border border-gray-300 rounded-xl px-3 py-2 bg-gray-900 text-white"
+                            />
+                        </div>
+                    </div>
+                )}
             </div>
 
             {/* Résultats */}
             <div className="w-full mt-4">
                 {selectedType.length > 0 ? (
-                    <div className="grid grid-cols-3 gap-6 mt-2 w-full">
-                        {results}
-                    </div>
+                    <>
+                        {(() => {
+                            const transactionExistePourType = filteredElements.some(
+                                (el) => getField(el, selectedType, "transaction") === selectedTransaction
+                            );
+
+                            if (selectedTransaction && !transactionExistePourType) {
+                                return (
+                                    <div className="flex flex-col items-center justify-center mt-10 gap-3">
+                                        <p className="text-center text-red-500 font-bold text-lg">
+                                            Le type de transaction <span className="capitalize">« {selectedTransaction} »</span> n'existe pas pour les <span className="capitalize">{selectedType}</span>.
+                                        </p>
+                                        <p className="text-gray-400 text-sm">
+                                            Veuillez choisir une autre transaction ou un autre type de véhicule.
+                                        </p>
+                                    </div>
+                                );
+                            }
+
+                            if (results.length > 0) {
+                                return (
+                                    <div className="grid grid-cols-3 gap-6 mt-2 w-full">
+                                        {results}
+                                    </div>
+                                );
+                            }
+
+                            return (
+                                <p className="text-center text-gray-500 mt-6">
+                                    Aucun véhicule trouvé pour les critères sélectionnés.
+                                </p>
+                            );
+                        })()}
+                    </>
+                ) : selectedTransaction ? (
+                    (() => {
+                        const vehiculesDeTran: { el: Vehicule; type: string }[] = dataProd[0].vehicule.flatMap((v) =>
+                            (v.elements || [])
+                                .filter((el: Vehicule) => el.transaction === selectedTransaction)
+                                .map((el: Vehicule) => ({ el, type: v.name }))
+                        );
+
+                        if (vehiculesDeTran.length === 0) {
+                            return (
+                                <div className="flex flex-col items-center justify-center mt-10 gap-3">
+                                    <span className="text-5xl">🚫</span>
+                                    <p className="text-center text-red-500 font-bold text-lg">
+                                        Le type de transaction <span className="capitalize">« {selectedTransaction} »</span> n'existe pas dans la base de données.
+                                    </p>
+                                    <p className="text-gray-400 text-sm">
+                                        Veuillez choisir une autre transaction.
+                                    </p>
+                                </div>
+                            );
+                        }
+
+                        return (
+                            <div>
+                                <div className="flex items-center gap-3 mb-3">
+                                    <span className="border border-b border-gray-300 p-3 rounded-xl text-white bg-gray-900 font-bold capitalize">
+                                        {selectedTransaction}
+                                    </span>
+                                    {/* <span className="text-gray-400 text-sm">
+                                        ({vehiculesDeTran.length} véhicule{vehiculesDeTran.length > 1 ? "s" : ""})
+                                    </span> */}
+                                </div>
+                                <div className="grid grid-cols-3 gap-6 mt-3 w-full">
+                                    {vehiculesDeTran.map(({ el, type }, index) =>
+                                        renderCard(el, type, index)
+                                    )}
+                                </div>
+                            </div>
+                        );
+                    })()
                 ) : (
                     <div>
-                        <h1 className="text-center  mb-2 px-2 text-gray-700 text-md">
+                        <h1 className="text-center mb-4 px-2 text-gray-700 text-md">
                             Profitez des meilleures offres sur les voitures, motos et vélos. Comparez facilement et trouvez le véhicule idéal au meilleur prix !
                         </h1>
-                        <div className="mb-4">
-                            <span className="border border-b border-gray-300 p-3 rounded-xl text-white bg-gray-900">
-                                Voitures
-                            </span>
+                        {(() => {
+                            const voituresData = dataProd[0].vehicule.find((v) => v.name === "voitures");
+                            const voituresAchat: Vehicule[] = (voituresData?.elements || []).filter(
+                                (el: Vehicule) => el.transaction === "achat"
+                            );
 
-                            <div className="grid grid-cols-3 gap-6 mt-3 w-full">
-                                {allVehicles.map((el, index) =>
-                                    renderCard(el, "voitures", index)
-                                )}
-                            </div>
-                        </div>
+                            if (voituresAchat.length === 0) return (
+                                <p className="text-center text-gray-500 mt-6">Aucune voiture disponible à l'achat.</p>
+                            );
+
+                            return (
+                                <div className="mb-8">
+                                    <div className="flex items-center gap-3 mb-3">
+                                        <span className="border border-b border-gray-300 p-3 rounded-xl text-white bg-gray-900 font-bold capitalize">
+                                            Achat
+                                        </span>
+                                        {/* <span className="text-gray-400 text-sm">
+                                            ({voituresAchat.length} voiture{voituresAchat.length > 1 ? "s" : ""})
+                                        </span> */}
+                                    </div>
+                                    <div className="grid grid-cols-3 gap-6 mt-3 w-full">
+                                        {voituresAchat.map((el, index) =>
+                                            renderCard(el, "voitures", index)
+                                        )}
+                                    </div>
+                                </div>
+                            );
+                        })()}
                     </div>
                 )}
             </div>
