@@ -23,14 +23,13 @@ type Vehicule = {
 };
 
 const Filtrage = () => {
-    const [selectedVehicule, setSelectedVehicule] = useState<Vehicule | null>(null);
+    // const [selectedVehicule, setSelectedVehicule] = useState<Vehicule | null>(null);
     const navigate = useNavigate();
     const [selectedType, setSelectedType] = useState("");
     const [selectedMarque, setSelectedMarque] = useState("");
     const [selectedModel, setSelectedModel] = useState("");
     const [selectedCarburant, setSelectedCarburant] = useState("");
-    const [voituresSelectionnees, setVoituresSelectionnees] = useState([]);
-    const [modeComparaison, setModeComparaison] = useState(false);
+    // const [voituresSelectionnees, setVoituresSelectionnees] = useState([]);
     const [selectedTransaction, setSelectedTransaction] = useState("");
     const [dateDebut, setDateDebut] = useState("");
     const [dateFin, setDateFin] = useState("");
@@ -161,6 +160,7 @@ const Filtrage = () => {
                                 prix: prix || "",
                                 img_vehicule: img_vehicule || "",
                                 transaction: transaction || "",
+                                type: type || "voitures",
                             })
                         }
                     >

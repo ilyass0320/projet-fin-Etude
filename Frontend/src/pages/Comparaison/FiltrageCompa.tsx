@@ -12,7 +12,6 @@ const Filrage = () => {
     const [vehiculeSelectionnees, setVehiculeSelectionnees] = useState<Vehicule[]>([]);
     const [modeComparaison, setModeComparaison] = useState(false);
 
-
     type Vehicule = {
         [key: string]: any;
         motors?: { [Key: string]: any }[];
@@ -32,23 +31,25 @@ const Filrage = () => {
         ? (selectedTypeData?.elements as Vehicule[])
         : [];
 
-    //ajouter une voiture a la comparaison
+    // Ajouter une voiture à la comparaison
     const ajouterAComparaison = (vehicule: Vehicule) => {
-        if (vehiculeSelectionnees.length < 2 && !vehiculeSelectionnees.find(v => v.id === vehicule.id)
+        if (
+            vehiculeSelectionnees.length < 2 &&
+            !vehiculeSelectionnees.find(v => v.id === vehicule.id)
         ) {
             setVehiculeSelectionnees([...vehiculeSelectionnees, vehicule]);
         }
     };
 
-    //Retirer une voiture de la comparaison 
+    // Retirer une voiture de la comparaison
     const retirerDeComparaison = (id: number) => {
         setVehiculeSelectionnees(vehiculeSelectionnees.filter(v => v.id !== id));
     };
 
-
-    //vider la selection
+    // Vider la sélection
     const viderSelection = () => setVehiculeSelectionnees([]);
-    // --- Filtrage quand un type est choisi ---
+
+    // Filtrage quand un type est choisi
     const results = filteredElements
         .filter((el) => {
             const marque = getField(el, selectedType, "Marque") || getField(el, selectedType, "marque");
@@ -62,32 +63,19 @@ const Filrage = () => {
         })
         .map((el, index) => renderCard(el, selectedType, index));
 
-    // --- Si aucun filtre choisi → récupérer TOUS les véhicules (voitures, motos, vélos) ---
-    const allVehicles: Vehicule[] = dataProd[0].vehicule.flatMap((v) => v.elements || []);
-
-
-    // --- Fonction d'affichage d'une carte véhicule ---
+    // Fonction d'affichage d'une carte véhicule
     function renderCard(el: Vehicule, type: string, index: number) {
-
         const estSelectionnee = vehiculeSelectionnees.some(v => v.id === el.id);
         const peutAjouter = vehiculeSelectionnees.length < 2;
         const marque = getField(el, type, "Marque") || getField(el, type, "marque");
         const model = getField(el, type, "model") || getField(el, type, "modele");
-        const carburant = getField(el, type, "carburant");
+        const prix = getField(el, type, "prix");
         const img_vehicule = getField(el, type, "img_vehicule");
         const img_marque = getField(el, type, "img_marque");
-        const portesV = getField(el, type, "portes");
-        const placesV = getField(el, type, "places");
-        const prix = getField(el, type, "prix");
-        const annee = getField(el, type, "annee");
-        const prix_jour = getField(el, type, "prix_jour");
-        const kilometrage = getField(el, type, "kilometrage_Inclus")
-        const Transmission = getField(el, type, "transmission");
-
 
         return (
             <div key={index} className="w-100 border p-1 gap-2 rounded-md shadow-xl">
-                <div className="relative flex justify-center w-auto h-35 w-30 border border-none bg-gray-200 rounded-xl ">
+                <div className="relative flex justify-center w-auto h-35 w-30 border border-none bg-gray-200 rounded-xl">
                     <img src={img_vehicule} alt="img_vehicule" className="hoverImg" width={200} height={200} />
                     <div className="top-0 left-0 absolute m-1 z-10">
                         <img src={img_marque} alt="img_marque" width={40} height={40} />
@@ -98,7 +86,6 @@ const Filrage = () => {
                     <h2 className="text-sm font-bold text-red-700">{prix || "Non défini"}</h2>
                 </div>
                 <div className="flex gap-2 m-1">
-
                     {estSelectionnee ? (
                         <button
                             onClick={() => retirerDeComparaison(el.id)}
@@ -124,48 +111,41 @@ const Filrage = () => {
             </div>
         );
     }
-    // Tableau de comparaison 
+
+    // ─── Tableau de comparaison ───────────────────────────────────────────────
     const TableauComparaison = () => {
         if (vehiculeSelectionnees.length === 0) {
             return (
                 <div className="text-center py-12">
                     <Car className="mx-auto block h-12 w-12 text-gray-400 mb-4" />
+                    <p className="text-gray-500">Aucun véhicule sélectionné</p>
                 </div>
             );
         }
+
         const criteres = [
             { Key: "prix", label: "Prix", type: Number, inverse: true },
-            { Key: "puissance", label: "Puissance", type: Number },
+            { Key: "Puissance_max", label: "Puissance", type: Number },
             { Key: "annee", label: "Année", type: Number },
             { Key: "portes", label: "Portes", type: Number },
             { Key: "places", label: "Places", type: Number },
+            { Key: "transmission", label: "Transmission", type: String },
+            { Key: "carburant", label: "Carburant", type: String },
+            { Key: "kilometrage_Inclus", label: "Kilométrage", type: String },
         ];
 
-
-        // Fonction pour déterminer quelle voiture a l'avantage
+        // Déterminer quel véhicule a l'avantage sur un critère
         const obtenirAvantage = (critere: any, v1: Vehicule, v2: Vehicule) => {
             const val1 = v1[critere.Key];
             const val2 = v2[critere.Key];
-
             if (val1 == null || val2 == null) return null;
-
-            // Cas numérique
             if (critere.type === Number) {
                 const n1 = Number(val1);
                 const n2 = Number(val2);
-
                 if (isNaN(n1) || isNaN(n2)) return null;
-
-                // inverse = plus petit est meilleur (ex: prix)
-                if (critere.inverse) {
-                    return n1 < n2 ? v1.id : n2 < n1 ? v2.id : null;
-                }
-
-                // normal = plus grand est meilleur
+                if (critere.inverse) return n1 < n2 ? v1.id : n2 < n1 ? v2.id : null;
                 return n1 > n2 ? v1.id : n2 > n1 ? v2.id : null;
             }
-
-            // Cas non numérique → pas d’avantage
             return null;
         };
 
@@ -173,23 +153,26 @@ const Filrage = () => {
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
                 <div className="overflow-x-auto">
                     <table className="min-w-full">
+                        {/* ✅ THEAD — itère sur vehiculeSelectionnees */}
                         <thead className="bg-gray-900">
                             <tr>
-                                <th className="px-6 py-4 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">Caractéristiques</th>
-                                {vehiculeSelectionnees.dataProd[0].vehicule.elements.map((vehicule) => (
+                                <th className="px-6 py-4 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                                    Caractéristiques
+                                </th>
+                                {vehiculeSelectionnees.map((vehicule) => (
                                     <th key={vehicule.id} className="px-6 py-4 text-center">
                                         <div className="flex flex-col items-center space-y-2">
                                             <img
-                                                src={vehicule.image}
-                                                alt={`${vehicule.marque} ${vehicule.modele}`}
-                                                className="w-16 h-10 object-cover rounded"
+                                                src={vehicule.img_vehicule}
+                                                alt={`${vehicule.Marque} ${vehicule.model}`}
+                                                className="w-24 h-14 object-contain rounded"
                                             />
-                                            <div className="text-sm font-medium text-gray-900">
-                                                {vehicule.marque} {vehicule.modele}
+                                            <div className="text-sm font-medium text-white">
+                                                {vehicule.Marque} {vehicule.model}
                                             </div>
                                             <button
                                                 onClick={() => retirerDeComparaison(vehicule.id)}
-                                                className="text-red-500 hover:text-red-700"
+                                                className="text-red-400 hover:text-red-300 transition-colors"
                                             >
                                                 <X className="w-4 h-4" />
                                             </button>
@@ -198,40 +181,48 @@ const Filrage = () => {
                                 ))}
                             </tr>
                         </thead>
+
+                        {/* ✅ TBODY — map sur criteres (lignes), puis sur vehiculeSelectionnees (colonnes) */}
                         <tbody className="bg-white divide-y divide-gray-200">
-                            {vehiculeSelectionnees.map((voiture) => {
-                                const avantage = vehiculeSelectionnees.length === 2 ? obtenirAvantage(critere, vehiculeSelectionnees[0], vehiculeSelectionnees[1]) : null;
-                                const aAvantage = avantage === voiture.id;
+                            {criteres.map((critere) => {
+                                const avantage = vehiculeSelectionnees.length === 2
+                                    ? obtenirAvantage(critere, vehiculeSelectionnees[0], vehiculeSelectionnees[1])
+                                    : null;
                                 return (
-                                    <td
-                                        key={voiture.id}
-                                        className={`px-6 py-4 text-center font-medium ${aAvantage ? "text-green-600" : "text-gray-900"
-                                            }`}
-                                    >
-                                        <div className="flex items-center justify-center gap-2">
-                                            {aAvantage && <Check className="w-4 h-4 text-green-500" />}
-                                            <span>
-                                                {critere.format
-                                                    ? critere.format(voiture[critere.Key])
-                                                    : voiture[critere.Key] ?? "-"}
-                                            </span>
-                                        </div>
-                                    </td>
+                                    <tr key={critere.Key} className="hover:bg-gray-50 transition-colors">
+                                        <td className="px-6 py-4 text-sm font-semibold text-gray-600 bg-gray-50 whitespace-nowrap">
+                                            {critere.label}
+                                        </td>
+                                        {vehiculeSelectionnees.map((voiture) => {
+                                            const aAvantage = avantage === voiture.id;
+                                            return (
+                                                <td
+                                                    key={voiture.id}
+                                                    className={`px-6 py-4 text-center font-medium ${aAvantage ? "text-green-600 bg-green-50" : "text-gray-900"}`}
+                                                >
+                                                    <div className="flex items-center justify-center gap-2">
+                                                        {aAvantage && <Check className="w-4 h-4 text-green-500" />}
+                                                        <span>
+                                                            {voiture[critere.Key] ?? "-"}
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                            );
+                                        })}
+                                    </tr>
                                 );
                             })}
-
                         </tbody>
                     </table>
                 </div>
             </div>
-        )
-
-    }
+        );
+    };
 
     return (
         <div className="">
-            <div className="relative flex flex-col items-center space-x-3  ">
-                <div className="absolute h-[200px] space-y-6 flex flex-row border gap-10 p-8 bg-gray-100 rounded-3xl opacity-100 m-1 shadow-xl/30 ">
+            <div className="relative flex flex-col items-center space-x-3">
+                <div className="absolute h-[200px] space-y-6 flex flex-row border gap-10 p-8 bg-gray-100 rounded-3xl opacity-100 m-1 shadow-xl/30">
                     {/* Type */}
                     <div>
                         <label className="block font-semibold mb-1 mt-6">Type de véhicule</label>
@@ -243,15 +234,15 @@ const Filrage = () => {
                                 setSelectedModel("");
                                 setSelectedCarburant("");
                             }}
-                            className="w-full border border-gray-300 rounded-xl px-3 py-2 bg-gray-900 text-white aniHover">
+                            className="w-full border border-gray-300 rounded-xl px-3 py-2 bg-gray-900 text-white aniHover"
+                        >
                             <option value="">Sélectionner un type</option>
                             {dataProd[0].vehicule.map((v) => (
-                                <option key={v.id} value={v.name}>
-                                    {v.name}
-                                </option>
+                                <option key={v.id} value={v.name}>{v.name}</option>
                             ))}
                         </select>
                     </div>
+
                     {/* Marque */}
                     <div>
                         <label className="block font-semibold mb-1 mt-6">Marque</label>
@@ -267,14 +258,11 @@ const Filrage = () => {
                             <option value="">Sélectionner une marque</option>
                             {filteredElements.map((el, index) => {
                                 const marque = getField(el, selectedType, "Marque") || getField(el, selectedType, "marque");
-                                return (
-                                    <option key={index} value={marque}>
-                                        {marque}
-                                    </option>
-                                );
+                                return <option key={index} value={marque}>{marque}</option>;
                             })}
                         </select>
                     </div>
+
                     {/* Modèle */}
                     <div>
                         <label className="block font-semibold mb-1 mt-6">Modèle</label>
@@ -296,6 +284,7 @@ const Filrage = () => {
                                 ))}
                         </select>
                     </div>
+
                     {/* Carburant */}
                     <div>
                         <label className="block font-semibold mb-1 mt-6">Carburant</label>
@@ -319,91 +308,89 @@ const Filrage = () => {
                         </select>
                     </div>
                 </div>
+
                 <div className="mt-[15em] mb-10">
-                    {(results.length === 0) ? (
-                        <div className=" flex flex-col justify-center gap-2">
-                            <h1 className="text-center font-extrabold text-xl text-gray-900 mb-4 text-shadow-xl text-shadow-gray-100">Selections les Vehicules</h1>
-                            <div className=" flex flex-row justify-center gap-2 w-200 h-50">
-                                <div className="hoverImg border border-2 decoration-gray-800 rounded-xl w-1/2 shadow-xl/30 ring-1 ring-gray-500" >
+                    {results.length === 0 ? (
+                        <div className="flex flex-col justify-center gap-2">
+                            <h1 className="text-center font-extrabold text-xl text-gray-900 mb-4">
+                                Sélectionner les Véhicules
+                            </h1>
+                            <div className="flex flex-row justify-center gap-2 w-200 h-50">
+                                <div className="hoverImg border border-2 decoration-gray-800 rounded-xl w-1/2 shadow-xl/30 ring-1 ring-gray-500">
                                     <img src="/images/protection.png" alt="" className="w-50 h-50 object-cover mx-auto block p-2 opacity-70" />
                                 </div>
-                                <span><img src="/images/verifie.png" alt="" width="50" height="50" className="mx-auto block mt-20 p-2 opacity-50" /></span>
-                                <div className="hoverImg border border-2 decoration-gray-800 rounded-xl w-1/2 shadow-xl/30 ring-1 ring-gray-500" >
+                                <span>
+                                    <img src="/images/verifie.png" alt="" width="50" height="50" className="mx-auto block mt-20 p-2 opacity-50" />
+                                </span>
+                                <div className="hoverImg border border-2 decoration-gray-800 rounded-xl w-1/2 shadow-xl/30 ring-1 ring-gray-500">
                                     <img src="/images/protection.png" alt="" className="w-50 h-50 object-cover mx-auto block p-2 opacity-70" />
                                 </div>
                             </div>
                         </div>
                     ) : (
-                        <div>
-                            <div className="">
-                                <div className="max-w-7xl mx-auto px-4 py-8">
-                                    {/* En-tête */}
-                                    <div className="flex justify-between items-center mb-8">
-                                        <h1 className="text-left text-3xl m-1 font-bold text-2xl text-gray-900 mb-4 text-shadow-xl text-shadow-black-100 underline decoration-gray-900">
-                                            {modeComparaison ? 'Comparaison de Voitures' : `Catalogue de ${selectedTypeData?.name}`}
-                                        </h1>
-                                        <div className="flex items-center space-x-4">
-                                            {vehiculeSelectionnees.length > 0 && (
-                                                <div className="flex items-center space-x-2">
-                                                    <span className="text-sm text-gray-600">
-                                                        {vehiculeSelectionnees.length}/2 sélectionnées
-                                                    </span>
-                                                    <button
-                                                        onClick={viderSelection}
-                                                        className="text-red-500 hover:text-red-700 text-sm"
-                                                    >
-                                                        Vider
-                                                    </button>
-                                                </div>
-                                            )}
-
-                                            {!modeComparaison && vehiculeSelectionnees.length > 0 && (
-                                                <button
-                                                    onClick={() => setModeComparaison(true)}
-                                                    className="bg-gray-600 text-white px-4 py-2 rounded-lg hoverMode transition-colors"
-                                                >
-                                                    Voir Comparaison
-                                                </button>
-                                            )}
-
-                                            {modeComparaison && (
-                                                <button
-                                                    onClick={() => setModeComparaison(false)}
-                                                    className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors flex items-center gap-2"
-                                                >
-                                                    <ArrowLeft className="w-4 h-4" />
-                                                    Retour au Catalogue
-                                                </button>
-                                            )}
-                                            <div>
-                                                <div className="flex flex-col w-70 m-1 p-1 bg-gray-500 rounded-xl botton-0">
-                                                    <img src="/images/shopping-assistant.png" alt="" width={30} />
-                                                    <h1 className="font-extrabold text-xl text-gray-700">Besoin d’un deuxième avis professionnel ?</h1>
-                                                    <p className="text-gray-200 text-xs font-mono m-1">Nos experts en estimation sont disponibles 24h/24 et 7j/7 pour vous proposer une offre ferme et définitive en espèces pour votre véhicule.</p>
-                                                    <button type="submit" className="bg-gray-700 text-gray-300 uppercase mt-3 m-1 rounded-xl py-2 font-bold">Parler a un expert</button>
-                                                </div>
-                                            </div>
+                        <div className="max-w-7xl mx-auto px-4 py-8">
+                            {/* En-tête */}
+                            <div className="flex justify-between items-center mb-8">
+                                <h1 className="text-left text-3xl m-1 font-bold text-gray-900 underline decoration-gray-900">
+                                    {modeComparaison ? 'Comparaison de Voitures' : `Catalogue de ${selectedTypeData?.name}`}
+                                </h1>
+                                <div className="flex items-center space-x-4">
+                                    {vehiculeSelectionnees.length > 0 && (
+                                        <div className="flex items-center space-x-2">
+                                            <span className="text-sm text-gray-600">
+                                                {vehiculeSelectionnees.length}/2 sélectionnées
+                                            </span>
+                                            <button
+                                                onClick={viderSelection}
+                                                className="text-red-500 hover:text-red-700 text-sm"
+                                            >
+                                                Vider
+                                            </button>
                                         </div>
+                                    )}
+                                    {!modeComparaison && vehiculeSelectionnees.length >= 2 && (
+                                        <button
+                                            onClick={() => setModeComparaison(true)}
+                                            className="bg-gray-600 text-white px-4 py-2 rounded-lg hoverMode transition-colors"
+                                        >
+                                            Voir Comparaison
+                                        </button>
+                                    )}
+                                    {modeComparaison && (
+                                        <button
+                                            onClick={() => setModeComparaison(false)}
+                                            className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors flex items-center gap-2"
+                                        >
+                                            <ArrowLeft className="w-4 h-4" />
+                                            Retour au Catalogue
+                                        </button>
+                                    )}
+                                    <div className="flex flex-col w-70 m-1 p-1 bg-gray-500 rounded-xl">
+                                        <img src="/images/shopping-assistant.png" alt="" width={30} />
+                                        <h1 className="font-extrabold text-xl text-gray-700">Besoin d'un deuxième avis professionnel ?</h1>
+                                        <p className="text-gray-200 text-xs font-mono m-1">
+                                            Nos experts en estimation sont disponibles 24h/24 et 7j/7 pour vous proposer une offre ferme et définitive en espèces pour votre véhicule.
+                                        </p>
+                                        <button type="button" className="bg-gray-700 text-gray-300 uppercase mt-3 m-1 rounded-xl py-2 font-bold">
+                                            Parler à un expert
+                                        </button>
                                     </div>
-                                    <div>
-                                        {/* Contenu principal */}
-                                        {modeComparaison ? (
-                                            <TableauComparaison />
-                                        ) : (
-                                            <div className="">
-                                                <div className="grid grid-cols-3 gap-3  max-w-screen m-5">{results}</div>
-                                            </div>
-                                        )}
-                                    </div>
-
                                 </div>
                             </div>
+
+                            {/* Contenu principal */}
+                            {modeComparaison ? (
+                                <TableauComparaison />
+                            ) : (
+                                <div className="grid grid-cols-3 gap-3 max-w-screen m-5">
+                                    {results}
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
             </div>
-
-        </div >
+        </div>
     );
 };
 

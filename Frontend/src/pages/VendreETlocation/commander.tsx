@@ -1,4 +1,8 @@
 import { useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
+
+
+
 
 // ─── helpers ────────────────────────────────────────────────────────────────
 const required = (v) => (v && v.toString().trim() !== "" ? null : "Champ requis");
@@ -415,9 +419,7 @@ function StepConfirmation({ orderData }) {
                 </div>
             </div>
             <button onClick={exportPDF} disabled={loading}
-                className="w-full py-3 rounded-xl border border-gray-200 bg-white hover:bg-gray-50 text-gray-700
-          font-semibold text-sm transition flex items-center justify-center gap-2 disabled:opacity-50
-          shadow-[0_2px_8px_rgba(0,0,0,0.06)] hover:shadow-[0_4px_16px_rgba(0,0,0,0.10)]">
+                className="w-full py-3 rounded-xl border border-gray-200 bg-white hover:bg-gray-50 text-gray-700 font-semibold text-sm transition flex items-center justify-center gap-2 disabled:opacity-50 shadow-[0_2px_8px_rgba(0,0,0,0.06)] hover:shadow-[0_4px_16px_rgba(0,0,0,0.10)]">
                 {loading ? (
                     <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
@@ -436,7 +438,7 @@ function StepConfirmation({ orderData }) {
 }
 
 // ─── SIDEBAR ──────────────────────────────────────────────────────────────────
-function Summary({ data, step }) {
+function Summary({ data, step, type, marque, model, id, vehiculeImage }) {
     const prixVehicule = 85000;
     const total = prixVehicule + (data.fraisImmat || 0) + (data.fraisGarantie || 0) + (data.fraisLivraison || 0);
     const items = [
@@ -450,14 +452,15 @@ function Summary({ data, step }) {
         <div className="flex flex-col gap-4 w-72 flex-shrink-0">
             <div className="rounded-xl overflow-hidden bg-gray-800 border border-gray-200 shadow-sm">
                 <div className="bg-gray-500 text-white text-center border-b border-gray-500 px-4 py-2 text-xs font-semibold tracking-widest text-gray-400 uppercase">
-                    Votre véhicule
+                    Votre véhicule _{type}_
                 </div>
                 <div className="p-4">
-                    <div className="bg-gray-white text-white rounded-lg h-28 flex items-center justify-center text-3xl mb-3 border border-gray-100">
-                        image
+                    <div className="rounded-lg h-28 flex items-center justify-center mb-3 border border-gray-600 overflow-hidden">
+                        {vehiculeImage ? <img src={vehiculeImage} alt={`${marque} ${model}`} className="w-full h-full object-contain" /> : <span className="text-gray-500 text-sm">Aucune image</span>}
                     </div>
-                    <p className="font-bold text-gray-200 text-sm">Marque · Modèle</p>
-                    <p className="text-gray-400 text-xs mt-1">2023 · Essence · 12 000 km</p>
+                    <p className="font-bold text-gray-200 text-sm">
+                        {marque && model ? `${marque} · ${model}` : "Véhicule non défini"}
+                    </p>                    <p className="text-gray-400 text-xs mt-1">2023 · Essence · 12 000 km</p>
                 </div>
             </div>
             <div className="rounded-xl bg-gray-700 border border-gray-200 p-4 space-y-2 shadow-sm">
@@ -521,7 +524,11 @@ export default function Commander() {
     const [immat, setImmat] = useState({});
     const [garantie, setGarantie] = useState({});
     const [paiement, setPaiement] = useState({});
-
+    const { type, marque, model, id } = useParams<{ type: string; marque: string; model: string; id: string }>();
+    const category = type === "voiture" ? "voiture" : type === "moto" ? "moto" : "velos";
+    const location = useLocation();
+    // ✅ Récupérer l'image passée depuis PageDetails
+    const vehiculeImage = location.state?.image || null;
     const orderData = { ...infos, ...reprise, ...livraison, ...immat, ...garantie, ...paiement };
     const next = () => setStep(s => s + 1);
 
@@ -561,7 +568,7 @@ export default function Commander() {
                     </div>
 
                     {/* sidebar */}
-                    <Summary data={orderData} step={step} />
+                    <Summary data={orderData} step={step} vehiculeImage={vehiculeImage} marque={marque} model={model} type={type} id={id} />
                 </div>
             </div>
         </div>

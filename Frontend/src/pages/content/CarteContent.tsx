@@ -9,6 +9,7 @@ type CartItem = {
     img_vehicule: string;
     transaction: string;
     qty: number;
+    type: string;
 };
 
 type CartContextType = {

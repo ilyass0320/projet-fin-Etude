@@ -87,11 +87,11 @@ const router = createBrowserRouter([
     element: <Analyse />
   },
   {
-    path: "/contacter-Agence",
+    path: "/contacter-Agence/:type/:marque/:model/:id",
     element: <ContacterAgence />
   },
   {
-    path: "/commander",
+    path: "/commander/:type/:marque/:model/:id",
     element: <CommanderEnLigne />
   },
   {

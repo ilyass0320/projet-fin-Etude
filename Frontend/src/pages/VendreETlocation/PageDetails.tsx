@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './PageDetails.css';
 import { useParams } from 'react-router-dom';
@@ -186,11 +186,11 @@ const PageDetails = () => {
                                         <div>
                                             {
                                                 selectedOption === 'commande_En_Ligne' ? (
-                                                    <Link to="/commander">
+                                                    <Link to={`/commander/${type}/${vehicule.Marque}/${vehicule.model}/${id}`} state={{ image: currentImage }}>
                                                         <button className='mt-2 bg-blue-600 cursor-pointer  text-white p-2 rounded-lg w-full hover:bg-blue-800 transition-all duration-200'>Commandez en ligne</button>
                                                     </Link>
                                                 ) : (
-                                                    <Link to="/contacter-Agence">
+                                                    <Link to={`/contacter-Agence/${type}/${vehicule.Marque}/${vehicule.model}/${id}`} state={{ image: currentImage }}>
                                                         <button className='mt-2 bg-green-600 cursor-pointer  text-white p-2 rounded-lg w-full hover:bg-green-800 transition-all duration-200'>Contactez l'agence</button>
                                                     </Link>
                                                 )
