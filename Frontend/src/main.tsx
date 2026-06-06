@@ -20,7 +20,7 @@ import ContacterAgence from './pages/VendreETlocation/contacterAgence.tsx';
 import Analyse from './pages/Comparaison/comparaison.tsx';
 import CommanderEnLigne from './pages/VendreETlocation/commander.tsx';
 import ResetPass from './pages/connecter/RenitialisationMotPass.tsx';
-
+import Chatboot from './pages/Chatboot/chat.tsx';
 // ✅ Ajouter cet import
 import { CartProvider } from './pages/content/CarteContent.tsx';
 
@@ -97,6 +97,9 @@ const router = createBrowserRouter([
   {
     path: "/renitialiser-Mot-Pass",
     element: <ResetPass />
+  }, {
+    path: "/chat-ia-aide",
+    element: <Chatboot />
   }
 ]);
 

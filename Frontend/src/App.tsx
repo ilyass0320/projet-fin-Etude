@@ -23,7 +23,7 @@ import { RiArrowRightWideLine } from "react-icons/ri";
 import './App.css'
 import Header from "./pages/Navbar/Header";
 import Marques from "./pages/Navbar/Marques";
-
+import Chatboot from "./pages/Chatboot/chat.tsx";
 const information = [
   { id: 1, title: "une large choix", Image: { logo }, description: "Découvrez une large game de marques et de modeles adaptes a votre budget et a votre style. Choisissez parmi nos nombreuses option en essence et diesel.", image: logo },
   { id: 2, title: "qualite garantie", Image: { logo1 }, description: "Nous garantissons des véhicules et accessoires rigoureusement contrôlés pour assurer fiabilité et satisfaction. Chaque véhicule est inspecté avant location ou vente, et nos accessoires proviennent de marques reconnues pour leur durabilité. Avec notre engagement qualité, vous achetez et louez en toute confiance.", image: logo1 },
@@ -44,7 +44,7 @@ function App() {
       {/* slider description de contenant de site web */}
       <Header />
       <Slider1 />
-
+      <Chatboot />
       {/* comment ca marche le process */}
       <div id="comment-ca-marche" className='mt-[100px] flex flex-col justify-center items-center' >
         <h1 className='text-3xl font-bold mb-3'>Comment ca marche?</h1>
