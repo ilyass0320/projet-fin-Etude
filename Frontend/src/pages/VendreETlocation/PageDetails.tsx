@@ -572,144 +572,43 @@ const PageDetails = () => {
 
                         </div>
                         {/* Composants */}
-                        <div>
-                            <h1 className='text-center text-2xl font-bold mb-4 underline'>Les accessoires</h1>
-                            <div className='flex flex-col mt-3 mb-3'>
-                                <h1 className=' w-50 p-1 mb-1 rounded-xl text-center text-white bg-gray-900 font-bold '><hr />Confort intérieur <hr /></h1>
-                                <div className='flex flex-row gap-3'>
-                                    <div className='w-80 h-80 border rounded-xl'>
-                                        <img src="/images/housse_seige_peugeot.webp" alt="" className='w-60 h-40 p-1 rounded-xl' />
-                                        <div>
-                                            <h1 className='text-xl text-black font-bold p-1 '>housse du sieges</h1>
-                                            <p className='text-md font-bold text-red-700'>200 dh</p>
-                                            <button className='flex flex-row border w-auto p-2 m-3 ml-10 rounded-xl font-bold bg-gray-500 text-white'><Link to={`/composant/${vehicule.Marque}/${vehicule.model}`}>Ajouter au Paner </Link><MdOutlineLocalGroceryStore /></button>
-                                        </div>
-                                    </div>
-                                    <div className='w-80 h-80 border rounded-xl'>
-                                        <img src="/images/tapis-de-sol-antiderapants-pour-peugeot-208-en-cao.webp" alt="" className='w-60 h-40 p-1 rounded-xl' />
-                                        <div>
-                                            <h1 className='text-xl text-black font-bold p-1 '>Tapis du sol</h1>
-                                            <p className='text-md font-bold text-red-700'>200 dh</p>
-                                            <button className='flex flex-row border w-auto p-2 m-3 ml-10 rounded-xl font-bold bg-gray-500 text-white'><Link to={`/composant/${vehicule.Marque}/${vehicule.model}`}>Ajouter au Paner </Link><MdOutlineLocalGroceryStore /></button>
-                                        </div>
-                                    </div>
-                                    <div className='w-80 h-80 border rounded-xl'>
-                                        <img src="/images/appuie-tête.webp" alt="" className='w-60 h-40 p-1 rounded-xl' />
-                                        <div>
-                                            <h1 className='text-xl text-black font-bold p-1 '>appuie-tête noir</h1>
-                                            <p className='text-md font-bold text-red-700'>200 dh</p>
-                                            <button className='flex flex-row border w-auto p-2 m-3 ml-10 rounded-xl font-bold bg-gray-500 text-white'><Link to={`/composant/${vehicule.Marque}/${vehicule.model}`}>Ajouter au Paner </Link><MdOutlineLocalGroceryStore /></button>
-                                        </div>
-                                    </div>
-                                    <div className='w-80 h-80 border rounded-xl'>
-                                        <img src="/images/accoudoirs_peugeot208.jpg" alt="" className='w-60 h-40 p-1 rounded-xl' />
-                                        <div>
-                                            <h1 className='text-xl text-black font-bold p-1 '>accoudoir peugeot208</h1>
-                                            <p className='text-md font-bold text-red-700'>200 dh</p>
-                                            <button className='flex flex-row border w-auto p-2 m-3 ml-10 rounded-xl font-bold bg-gray-500 text-white'><Link to={`/composant/${vehicule.Marque}/${vehicule.model}`}>Ajouter au Paner </Link><MdOutlineLocalGroceryStore /></button>
-                                        </div>
-                                    </div>
-                                    <div className='w-80 h-80 border rounded-xl'>
-                                        <img src="/images/couvre-volantPeaugeot208.webp" alt="" className='w-60 h-40 p-1 rounded-xl' />
-                                        <div>
-                                            <h1 className='text-xl text-black font-bold p-1 '>couvre-volant</h1>
-                                            <p className='text-md font-bold text-red-700'>200 dh</p>
-                                            <button className='flex flex-row border w-auto p-2 m-3 ml-10 rounded-xl font-bold bg-gray-500 text-white'><Link to={`/composant/${vehicule.Marque}/${vehicule.model}`}>Ajouter au Paner </Link><MdOutlineLocalGroceryStore /></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='mt-3 mb-3'>
-                                <h1 className=' w-50 p-1 mb-1 rounded-xl text-center text-white bg-gray-900 font-bold '><hr />Équipements pratiques <hr /></h1>
-                                <div className='flex flex-row gap-3'>
-                                    <div className='w-80 h-80 border rounded-xl'>
-                                        <img src="/images/supports_de_téléphone_Peugeot.webp" alt="" className='w-80 h-40 p-1 rounded-xl' />
-                                        <div>
-                                            <h1 className='text-xl text-black font-bold p-1 '>Supports de téléphone</h1>
-                                            <p className='text-md font-bold text-red-700'>200 dh</p>
-                                            <button className='flex flex-row border w-auto p-2 m-3 ml-10 rounded-xl font-bold bg-gray-500 text-white'><Link to={`/composant/${vehicule.Marque}/${vehicule.model}`}>Ajouter au Paner </Link><MdOutlineLocalGroceryStore /></button>
-                                        </div>
-                                    </div>
-                                    <div className='w-80 h-80 border rounded-xl '>
-                                        <img src="/images/chargeurs_USB_12V_peogeut.webp" alt="" className='w-80 h-40 p-1 rounded-xl' />
-                                        <div>
-                                            <h1 className='text-xl text-black font-bold p-1 '>chargeurs USB/12V</h1>
-                                            <p className='text-md font-bold text-red-700'>200 dh</p>
-                                            <button className='flex flex-row border w-auto p-2 m-3 ml-10 rounded-xl font-bold bg-gray-500 text-white'><Link to={`/composant/${vehicule.Marque}/${vehicule.model}`}>Ajouter au Paner </Link><MdOutlineLocalGroceryStore /></button>
-                                        </div>
-                                    </div>
-                                    <div className='w-80 h-80 border rounded-xl'>
-                                        <img src="/images/tapis-de-coffrePEAGEUT.webp" alt="" className='w-80 h-40 p-1 rounded-xl' />
-                                        <div>
-                                            <h1 className='text-xl text-black font-bold p-1 '>tapis de coffre</h1>
-                                            <p className='text-md font-bold text-red-700'>200 dh</p>
-                                            <button className='flex flex-row border w-auto p-2 m-3 ml-10 rounded-xl font-bold bg-gray-500 text-white'><Link to={`/composant/${vehicule.Marque}/${vehicule.model}`}>Ajouter au Paner </Link><MdOutlineLocalGroceryStore /></button>
-                                        </div>
-                                    </div>
-                                    <div className='w-80 h-80 border rounded-xl'>
-                                        <img src="/images/accessoires-pour-rangementPEO.webp" alt="" className='w-80 h-40 p-1 rounded-xl' />
-                                        <div>
-                                            <h1 className='text-xl text-black font-bold p-1 '>accessoires pour rangement</h1>
-                                            <p className='text-md font-bold text-red-700'>200 dh</p>
-                                            <button className='flex flex-row border w-auto p-2 m-3 ml-10 rounded-xl font-bold bg-gray-500 text-white'><Link to={`/composant/${vehicule.Marque}/${vehicule.model}`}>Ajouter au Paner </Link><MdOutlineLocalGroceryStore /></button>
-                                        </div>
-                                    </div>
-                                    <div className='w-80 h-80 border rounded-xl'>
-                                        <img src="/images/accessoires-pour-rangementPEO.webp" alt="" className='w-80 h-40 p-1 rounded-xl' />
-                                        <div>
-                                            <h1 className='text-xl text-black font-bold p-1 '>accessoires pour rangement</h1>
-                                            <p className='text-md font-bold text-red-700'>200 dh</p>
-                                            <button className='flex flex-row border w-auto p-2 m-3 ml-10 rounded-xl font-bold bg-gray-500 text-white'><Link to={`/composant/${vehicule.Marque}/${vehicule.model}`}>Ajouter au Paner </Link><MdOutlineLocalGroceryStore /></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='mt-3 mb-3'>
-                                <h1 className=' w-50 p-1 mb-1 rounded-xl text-center text-white bg-gray-900 font-bold '><hr />Carrosserie & extérieur <hr /></h1>
-                                <div className='flex flex-row gap-3'>
-                                    <div className='w-80 h-80 border rounded-xl'>
-                                        <img src="/images/rétro-viseursP.webp" alt="" className='w-60 h-40 p-1 rounded-xl' />
-                                        <div>
-                                            <h1 className='text-xl text-black font-bold p-1 '>rétro viseurs</h1>
-                                            <p className='text-md font-bold text-red-700'>200 dh</p>
-                                            <button className='flex flex-row border w-auto p-2 m-3 ml-10 rounded-xl font-bold bg-gray-500 text-white'><Link to={`/composant/${vehicule.Marque}/${vehicule.model}`}>Ajouter au Paner </Link><MdOutlineLocalGroceryStore /></button>
-                                        </div>
-                                    </div>
-                                    <div className='w-80 h-80 border rounded-xl'>
-                                        <img src="/images/pare-chocsP.webp" alt="" className='w-60 h-40 p-1 rounded-xl' />
-                                        <div>
-                                            <h1 className='text-xl text-black font-bold p-1 '>pare-chocs</h1>
-                                            <p className='text-md font-bold text-red-700'>200 dh</p>
-                                            <button className='flex flex-row border w-auto p-2 m-3 ml-10 rounded-xl font-bold bg-gray-500 text-white'><Link to={`/composant/${vehicule.Marque}/${vehicule.model}`}>Ajouter au Paner </Link><MdOutlineLocalGroceryStore /></button>
-                                        </div>
-                                    </div>
-                                    <div className='w-80 h-80 border rounded-xl'>
-                                        <img src="/images/optiques-phares-feuxP.jpg" alt="" className='w-60 h-40 p-1 rounded-xl' />
-                                        <div>
-                                            <h1 className='text-xl text-black font-bold p-1 '>optiques-phares-feux</h1>
-                                            <p className='text-md font-bold text-red-700'>200 dh</p>
-                                            <button className='flex flex-row border w-auto p-2 m-3 ml-10 rounded-xl font-bold bg-gray-500 text-white'><Link to={`/composant/${vehicule.Marque}/${vehicule.model}`}>Ajouter au Paner </Link><MdOutlineLocalGroceryStore /></button>
-                                        </div>
-                                    </div>
-                                    <div className='w-80 h-80 border rounded-xl'>
-                                        <img src="/images/vitresP.jpg" alt="" className='w-60 h-40 p-1 rounded-xl' />
-                                        <div>
-                                            <h1 className='text-xl text-black font-bold p-1 '>Vitres</h1>
-                                            <p className='text-md font-bold text-red-700'>200 dh</p>
-                                            <button className='flex flex-row border w-auto p-2 m-3 ml-10 rounded-xl font-bold bg-gray-500 text-white'><Link to={`/composant/${vehicule.Marque}/${vehicule.model}`}>Ajouter au Paner </Link><MdOutlineLocalGroceryStore /></button>
-                                        </div>
-                                    </div>
-                                    <div className='w-80 h-80 border rounded-xl'>
-                                        <img src="/images/piecesUsure.webp" alt="" className='w-60 h-40 p-1 rounded-xl' />
-                                        <div>
-                                            <h1 className='text-xl text-black font-bold p-1 '>les pieces d'usure</h1>
-                                            <p className='text-md font-bold text-red-700'>200 dh</p>
-                                            <button className='flex flex-row border w-auto p-2 m-3 ml-10 rounded-xl font-bold bg-gray-500 text-white'><Link to={`/composant/${vehicule.Marque}/${vehicule.model}`}>Ajouter au Paner </Link><MdOutlineLocalGroceryStore /></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                       {/* Accessoires - dynamique */}
+<div className='mt-4 mb-4 p-4 bg-gray-100 rounded-xl'>
+    <h1 className='text-left text-2xl font-extrabold mb-4'>Accessoires</h1>
+    
+    {categorie.composant && categorie.composant.length > 0 ? (
+        <div className="grid grid-row-6 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {categorie.composant.map((item, index) => (
+                <div
+                    key={index}
+                    className="w-full rounded-2xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden bg-white"
+                >
+                    <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-full h-52 object-cover"
+                    />
+                    <div className="p-4">
+                        <span className="text-xs font-semibold uppercase tracking-wide text-white bg-[#1B3246] px-2 py-1 rounded-full">
+                            {item.type}
+                        </span>
+                        <h1 className="text-xl font-bold text-gray-800 mt-2">{item.name}</h1>
+                        <p className="text-2xl font-bold text-red-600 mt-2">{item.prix}</p>
+                        <Link
+                            to={`/details-accessoires/${vehicule.Marque}/${vehicule.model}/${item.name}/${index}`}
+                            className="mt-4 flex items-center justify-center gap-2 w-full bg-gray-700 hover:bg-gray-800 text-white font-semibold py-3 rounded-lg transition"
+                        >
+                            <MdOutlineLocalGroceryStore size={22} />
+                            Voir l'accessoire
+                        </Link>
+                    </div>
+                </div>
+            ))}
+        </div>
+    ) : (
+        <p className="text-gray-500 text-center py-6">Aucun accessoire disponible pour cette catégorie.</p>
+    )}
+</div>
                     </div>
                 </div>
             </div >

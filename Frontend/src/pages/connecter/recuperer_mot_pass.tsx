@@ -3,7 +3,7 @@ import { useState } from "react"
 import { Link, useNavigate } from 'react-router-dom'
 import './login.css';
 import { MdEmail } from "react-icons/md";
-import show from '/images/thumb_400.jpg';
+import show from '/images/car-tyre-ono.jpg?url';
 import Headers from "../Navbar/Header";
 
 const RecupererMotPass = () => {

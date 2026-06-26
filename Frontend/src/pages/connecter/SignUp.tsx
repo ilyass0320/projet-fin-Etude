@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './SignUp.css';
-import show from '/public/images/thumb_400.jpg';
+import show from '/images/car-tyre-ono.jpg?url';
 import Headers from '../Navbar/Header';
 
 // Configuration de base d'axios

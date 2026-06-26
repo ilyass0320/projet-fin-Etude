@@ -21,6 +21,7 @@ import Analyse from './pages/Comparaison/comparaison.tsx';
 import CommanderEnLigne from './pages/VendreETlocation/commander.tsx';
 import ResetPass from './pages/connecter/RenitialisationMotPass.tsx';
 import Chatboot from './pages/Chatboot/chat.tsx';
+import PageComposant from "./pages/VendreETlocation/PageDetailsComposant.tsx"
 // ✅ Ajouter cet import
 import { CartProvider } from './pages/content/CarteContent.tsx';
 
@@ -81,6 +82,9 @@ const router = createBrowserRouter([
   {
     path: "/details/:type/:marque/:model/:id",
     element: <PageDetails />
+  },
+  {
+    path:"/details-accessoires/:marque/:model/:name/:id"
   },
   {
     path: "/comparaisonCarte",

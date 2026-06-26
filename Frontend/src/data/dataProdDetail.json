@@ -1,396 +1,416 @@
-[
-    {
-        "vehicule": [
-            {
+[{
+    "vehicule": [{
+            "id": 1,
+            "name": "voitures",
+            "elements": [{
+                    "id": 1,
+                    "Marque": "Peugeot",
+                    "model": "208",
+                    "annee": "2024",
+                    "colors": [{
+                            "id": 1,
+                            "color": "#000000",
+                            "image": "/images/black_peugeot_208.avif",
+                            "name": "Noir"
+                        },
+                        {
+                            "id": 2,
+                            "color": "#7FFF00",
+                            "image": "/images/lime_peugeot_208.avif",
+                            "name": "Vert"
+                        },
+                        {
+                            "id": 3,
+                            "color": "#808080",
+                            "image": "/images/gray_peugeot_208.avif",
+                            "name": "Gris"
+                        },
+                        {
+                            "id": 4,
+                            "color": "#0000FF",
+                            "image": "/images/bleu_peugeot_208.avif",
+                            "name": "Bleu"
+                        },
+                        {
+                            "id": 5,
+                            "color": "#FFFFFF",
+                            "image": "/images/blanch_peugeot_208.avif",
+                            "name": "Blanc"
+                        },
+                        {
+                            "id": 6,
+                            "color": "#FF0000",
+                            "image": "/images/rouge_peugeot_208.jpg",
+                            "name": "Rouge"
+                        }
+                    ],
+                    "images": [
+                        "/images/peugeot-208-removebg-preview.png",
+                        "/images/blanch_peugeot_208.avif",
+                        "/images/peugeot_1.jpg",
+                        "/images/peugeot_2.webp",
+                        "/images/peugeot_3.avif",
+                        "/images/peugeot_4.webp",
+                        "/images/image_Globa_peugeot_208.avif",
+                        "/images/.peugeot_208_6.jpg"
+                    ],
+                    "transmission": "manuel",
+                    "transaction": "achat",
+                    "carburant": "diesel",
+                    "places": 4,
+                    "portes": 4,
+                    "climatisation": "oui",
+                    "couleur": "Blanc",
+                    "kilometrage_Inclus": "300km/jour",
+                    "prix_jour": "400 DH/jour",
+                    "prix_mois": "1599 DH/mois",
+                    "Motorisation": "1.5L BlueHDi",
+                    "Puissance_max": "100 ch",
+                    "Puissance_Fiscale": "7",
+                    "options": [
+                        "GPS intégré",
+                        "Caméra de recul",
+                        "Connectivité Bluetooth",
+                        "Système audio premium"
+                    ],
+                    "img_vehicule": "/images/peugeot-208-removebg-preview.png",
+                    "img_marque": "/images/logo-Peugeot.png",
+                    "prix": "175.960 MAD",
+                    "reservations": [{
+                        "debut": "2025-09-20",
+                        "fin": "2025-09-22",
+                        "user": "Youssef",
+                        "tel": "0677889900"
+                    }]
+                },
+                {
+                    "id": 2,
+                    "Marque": "Peugeot",
+                    "model": "208",
+                    "annee": "2024",
+                    "color": "",
+                    "images": [
+                        "/images/peugeot-208-1.png",
+                        "/images/peugeot-208-2.png",
+                        "/images/peugeot-208-3.png"
+                    ],
+                    "transmission": "manuel",
+                    "carburant": "diesel",
+                    "places": 4,
+                    "portes": 4,
+                    "climatisation": "oui",
+                    "couleur": null,
+                    "kilometrage_Inclus": "300km/jour",
+                    "prix_jour": "480 DH/jour",
+                    "options": null,
+                    "img_vehicule": "/images/peugeot-208-removebg-preview.png",
+                    "img_marque": "/images/logo-Peugeot.png",
+                    "prix": "175.960 MAD",
+                    "reservations": [{
+                        "debut": "2025-09-20",
+                        "fin": "2025-09-22",
+                        "user": "Youssef",
+                        "tel": "0677889900"
+                    }]
+                },
+                {
+                    "id": 3,
+                    "Marque": "Audi",
+                    "model": "Serie 3",
+                    "annee": "2020",
+                    "categorie": "Berline",
+                    "transmission": "Automatique",
+                    "transaction": "achat",
+                    "carburant": "",
+                    "color": "#7FFFD4",
+                    "places": 4,
+                    "portes": 4,
+                    "climatisation": "oui",
+                    "couleur": "blanche",
+                    "kilometrage_Inclus": "",
+                    "options": "",
+                    "img_vehicule": "/images/audi-berline-serie3-voiture.png",
+                    "img_marque": "/images/Audi-logo.png",
+                    "prix_jour": "500 DH/jour",
+                    "prix": "648.000 MAD",
+                    "reservations": [{
+                        "debut": "2025-09-20",
+                        "fin": "2025-09-22",
+                        "user": "Youssef",
+                        "tel": "0677889900"
+                    }]
+                },
+                {
+                    "id": 4,
+                    "Marque": "Renault",
+                    "model": "Clio",
+                    "annee": "",
+                    "categorie": "GT",
+                    "transmission": "manuel",
+                    "carburant": "diesel",
+                    "transaction": "location",
+                    "places": 4,
+                    "portes": 4,
+                    "climatisation": "",
+                    "couleur": "bleu",
+                    "kilometrage_Inclus": "180 km/jour",
+                    "options": "",
+                    "img_vehicule": "/images/Renault-clio-GT.png",
+                    "img_marque": "/images/renault-logo.png",
+                    "prix_jour": "480 DH/jour",
+                    "prix": "245.000 MAD",
+                    "reservations": [{
+                            "debut": "2025-09-25",
+                            "fin": "2025-09-28",
+                            "user": "Ali",
+                            "tel": "0612345678"
+                        },
+                        {
+                            "debut": "2025-10-02",
+                            "fin": "2025-10-05",
+                            "user": "Fatima",
+                            "tel": "0698765432"
+                        }
+                    ]
+                },
+                {
+                    "id": 5,
+                    "Marque": "BMW",
+                    "model": "M4",
+                    "annee": "2024",
+                    "categorie": "coupe",
+                    "transmission": "Automatique",
+                    "carburant": "Essence",
+                    "transaction": "achat",
+                    "places": 4,
+                    "portes": 4,
+                    "climatisation": "Oui",
+                    "couleur": "rouge",
+                    "kilometrage_Inclus": "50,000 km",
+                    "options": "Système de son premium, sièges chauffants, toit panoramique, caméra de recul",
+                    "img_vehicule": "/images/2024-bmw-m4.png",
+                    "img_marque": "/images/bmw-logo.png",
+                    "prix": "648.000 MAD",
+                    "reservations": []
+                },
+                {
+                    "id": 6,
+                    "Marque": "Mercedes",
+                    "model": "Classe A",
+                    "annee": "2024",
+                    "categorie": "Compacte",
+                    "transmission": "automatique",
+                    "transaction": "achat",
+                    "carburant": "diesel",
+                    "places": 5,
+                    "portes": 5,
+                    "climatisation": "oui",
+                    "couleur": "Noir",
+                    "kilometrage_Inclus": "200 km/jour",
+                    "options": "Toit panoramique, Bluetooth",
+                    "img_vehicule": "/images/mercedes-classe-a-2024.png",
+                    "img_marque": "/images/Merc_logo.png",
+                    "prix_jour": "700 DH/jour",
+                    "prix": "648.000 MAD",
+                    "reservations": []
+                },
+                {
+                    "id": 7,
+                    "Marque": "Dacia",
+                    "model": "Duster",
+                    "annee": 2024,
+                    "categorie": "",
+                    "transmission": "Automatique",
+                    "carburant": "",
+                    "places": 4,
+                    "portes": 4,
+                    "climatisation": "",
+                    "transaction": "achat",
+                    "couleur": "",
+                    "kilometrage_Inclus": "",
+                    "options": "",
+                    "img_vehicule": "/images/Duster-Dacia-24.png",
+                    "img_marque": "/images/Dacia-logo.png",
+                    "prix_jour": "500 DH/jour",
+                    "prix": "226.900,00 MAD",
+                    "reservations": []
+                },
+                {
+                    "id": 8,
+                    "Marque": "Nissan",
+                    "model": "Qashqai",
+                    "annee": "2024",
+                    "categorie": "SUV",
+                    "transmission": "automatique",
+                    "transaction": "achat",
+                    "carburant": "essence",
+                    "places": 5,
+                    "portes": 5,
+                    "climatisation": "oui",
+                    "couleur": "blanche",
+                    "kilometrage_Inclus": "150 km/jour",
+                    "options": "GPS, Caméra de recul",
+                    "img_vehicule": "/images/Nissan-Qashqai-2024-blanch.png",
+                    "img_marque": "/images/nissan_logo.png",
+                    "prix_jour": "500 DH/jour",
+                    "prix": "648.000 MAD",
+                    "reservations": []
+                },
+                {
+                    "id": 9,
+                    "Marque": "Volkswagen",
+                    "model": "Golf GTI",
+                    "transaction": "achat",
+                    "annee": "2023",
+                    "categorie": "Compacte",
+                    "transmission": "manuel",
+                    "carburant": "diesel",
+                    "places": 5,
+                    "portes": 4,
+                    "climatisation": "oui",
+                    "couleur": "Blanc",
+                    "kilometrage_Inclus": "180 km/jour",
+                    "options": "Capteurs de stationnement, Écran tactile",
+                    "img_vehicule": "/images/Volkswagen-Golf-GTI-2023.png",
+                    "img_marque": "/images/volkswagen-logo.png",
+                    "prix": "550.000 MAD",
+                    "prix_jour": "500 DH/jour",
+                    "reservations": []
+                },
+                {
+                    "id": 10,
+                    "Marque": "Citroën",
+                    "transaction": "achat",
+                    "model": "C3",
+                    "annee": "2021",
+                    "categorie": "Citadine",
+                    "transmission": "manuel",
+                    "carburant": "essence",
+                    "places": 5,
+                    "portes": 5,
+                    "climatisation": "oui",
+                    "couleur": "Rouge",
+                    "kilometrage_Inclus": "150 km/jour",
+                    "options": "Aide au démarrage en côte, Bluetooth",
+                    "img_vehicule": "/images/citroen-c3-2020.png",
+                    "img_marque": "/images/Citroen_logo.png",
+                    "prix_jour": "480 DH/jour",
+                    "prix": "648.000 MAD",
+                    "reservations": []
+                }
+            ],
+            "composant": [{
+                    "type": "Confort intérieur",
+                    "name": "Housse de sièges",
+                    "image": "/images/housse_seige_peugeot.webp",
+                    "prix": "200 dh"
+                },
+                {
+                    "type": "Confort intérieur",
+                    "name": "Tapis de sol",
+                    "image": "/images/tapis-de-sol-antiderapants-pour-peugeot-208-en-cao.webp",
+                    "prix": "200 dh"
+                },
+                {
+                    "type": "Esthétique extérieure",
+                    "name": "Jantes alu",
+                    "image": "/images/jantes_alu.webp",
+                    "prix": "1500 dh"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "motors",
+            "elements": [{
                 "id": 1,
-                "name": "voitures",
-                "elements": [
-                    {
-                        "id": 1,
-                        "Marque": "Peugeot",
-                        "model": "208",
-                        "annee": "2024",
-                        "colors": [
-                            {
-                                "id": 1,
-                                "color": "#000000",
-                                "image": "/images/black_peugeot_208.avif",
-                                "name": "Noir"
-                            },
-                            {
-                                "id": 2,
-                                "color": "#7FFF00",
-                                "image": "/images/lime_peugeot_208.avif",
-                                "name": "Vert"
-                            },
-                            {
-                                "id": 3,
-                                "color": "#808080",
-                                "image": "/images/gray_peugeot_208.avif",
-                                "name": "Gris"
-                            },
-                            {
-                                "id": 4,
-                                "color": "#0000FF",
-                                "image": "/images/bleu_peugeot_208.avif",
-                                "name": "Bleu"
-                            },
-                            {
-                                "id": 5,
-                                "color": "#FFFFFF",
-                                "image": "/images/blanch_peugeot_208.avif",
-                                "name": "Blanc"
-                            },
-                            {
-                                "id": 6,
-                                "color": "#FF0000",
-                                "image": "/images/rouge_peugeot_208.jpg",
-                                "name": "Rouge"
-                            }
-                        ],
-                        "images": [
-                            "/images/peugeot-208-removebg-preview.png ",
-                            "/images/blanch_peugeot_208.avif",
-                            "/images/peugeot_1.jpg",
-                            "/images/peugeot_2.webp",
-                            "/images/peugeot_3.avif",
-                            "/images/peugeot_4.webp",
-                            "/images/image_Globa_peugeot_208.avif",
-                            "/images/.peugeot_208_6.jpg"
-                        ],
-                        "transmission": "manuel",
-                        "transaction": "achat",
-                        "carburant": "diesel",
-                        "places": 4,
-                        "portes": 4,
-                        "climatisation": "oui",
-                        "couleur": "Blanc",
-                        "kilometrage_Inclus": "300km/jour",
-                        "prix_jour": "400 DH/jour",
-                        "prix_mois": "1599 DH/mois",
-                        "Motorisation": "1.5L BlueHDi",
-                        "Puissance_max": "100 ch",
-                        "Puissance_Fiscale": "7",
-                        "options": [
-                            "GPS intégré",
-                            "Caméra de recul",
-                            "Connectivité Bluetooth",
-                            "Système audio premium"
-                        ],
-                        "img_vehicule": "/images/peugeot-208-removebg-preview.png",
-                        "img_marque": "/images/logo-Peugeot.png",
-                        "prix": "175.960 MAD",
-                        "reservations": [
-                            {
-                                "debut": "2025-09-20",
-                                "fin": "2025-09-22",
-                                "user": "Youssef",
-                                "tel": "0677889900"
-                            }
-                        ]
-                    },
-                    {
-                        "id": 2,
-                        "Marque": "Peugeot",
-                        "model": "208",
-                        "annee": "2024",
-                        "color": "",
-                        "images": [
-                            "/images/peugeot-208-1.png",
-                            "/images/peugeot-208-2.png",
-                            "/images/peugeot-208-3.png"
-                        ],
-                        "transmission": "manuel",
-                        "carburant": "diesel",
-                        "places": 4,
-                        "portes": 4,
-                        "climatisation": "oui",
-                        "couleur": null,
-                        "kilometrage_Inclus": "300km/jour",
-                        "prix_jour": "480 DH/jour",
-                        "options": null,
-                        "img_vehicule": "/images/peugeot-208-removebg-preview.png",
-                        "img_marque": "/images/logo-Peugeot.png",
-                        "prix": "175.960 MAD",
-                        "reservations": [
-                            {
-                                "debut": "2025-09-20",
-                                "fin": "2025-09-22",
-                                "user": "Youssef",
-                                "tel": "0677889900"
-                            }
-                        ]
-                    },
-                    {
-                        "id": 2,
-                        "Marque": "Audi",
-                        "model": "Serie 3",
-                        "annee": "2020",
-                        "categorie": "Berline",
-                        "transmission": "Automatique",
-                        "transaction": "achat",
-                        "carburant": "",
-                        "color": "# 7FFFD4",
-                        "places": 4,
-                        "portes": 4,
-                        "climatisation": "oui",
-                        "couleur": "blanche",
-                        "kilometrage_Inclus": "",
-                        "options": "",
-                        "img_vehicule": "/images/audi-berline-serie3-voiture.png",
-                        "img_marque": "/images/Audi-logo.png",
-                        "prix_jour": "500 DH/jour",
-                        "prix": " 648.000 MAD",
-                        "reservations": [
-                            {
-                                "debut": "2025-09-20",
-                                "fin": "2025-09-22",
-                                "user": "Youssef",
-                                "tel": "0677889900"
-                            }
-                        ]
-                    },
-                    {
-                        "id": 3,
-                        "Marque": "Renault",
-                        "model": "Clio",
-                        "annee": "",
-                        "categorie": "GT",
-                        "transmission": "manuel",
-                        "carburant": "diesel",
-                        "transaction": "location",
-                        "places": 4,
-                        "portes": 4,
-                        "climatisation": "",
-                        "couleur": "bleu",
-                        "kilometrage_Inclus": "180 km/jour",
-                        "options": "",
-                        "img_vehicule": "/images/Renault-clio-GT.png",
-                        "img_marque": "/images/renault-logo.png",
-                        "prix_jour": "480 DH/jour",
-                        "prix": "245.000 MAD",
-                        "reservations": [
-                            {
-                                "debut": "2025-09-25",
-                                "fin": "2025-09-28",
-                                "user": "Ali",
-                                "tel": "0612345678"
-                            },
-                            {
-                                "debut": "2025-10-02",
-                                "fin": "2025-10-05",
-                                "user": "Fatima",
-                                "tel": "0698765432"
-                            }
-                        ]
-                    },
-                    {
-                        "id": 4,
-                        "Marque": "BMW",
-                        "model": "M4",
-                        "annee": "2024",
-                        "categorie": "coupe",
-                        "transmission": "Automatique",
-                        "carburant": "Essence",
-                        "transaction": "achat",
-                        "places": 4,
-                        "portes": 4,
-                        "climatisation": "Oui",
-                        "couleur": "rouge",
-                        "kilometrage_Inclus": "50,000 km",
-                        "options": "Système de son premium, sièges chauffants, toit panoramique, caméra de recul",
-                        "img_vehicule": "/images/2024-bmw-m4.png",
-                        "img_marque": "/images/bmw-logo.png",
-                        "prix": "648.000 MAD",
-                        "reservations": []
-                    },
-                    {
-                        "id": 5,
-                        "Marque": "Mercedes",
-                        "model": "Classe A",
-                        "annee": "2024",
-                        "categorie": "Compacte",
-                        "transmission": "automatique",
-                        "transaction": "achat",
-                        "carburant": "diesel",
-                        "places": 5,
-                        "portes": 5,
-                        "climatisation": "oui",
-                        "couleur": "Noir",
-                        "kilometrage_Inclus": "200 km/jour",
-                        "options": "Toit panoramique, Bluetooth",
-                        "img_vehicule": "/images/mercedes-classe-a-2024.png",
-                        "img_marque": "/images/Merc_logo.png",
-                        "prix_jour": "700 DH/jour",
-                        "prix": " 648.000 MAD",
-                        "reservations": []
-                    },
-                    {
-                        "id": 6,
-                        "Marque": "Dacia",
-                        "model": "Duster",
-                        "annee": 2024,
-                        "categorie": "",
-                        "transmission": "Automatique",
-                        "carburant": "",
-                        "places": 4,
-                        "portes": 4,
-                        "climatisation": "",
-                        "transaction": "achat",
-                        "couleur": "",
-                        "kilometrage_Inclus": "",
-                        "options": "",
-                        "img_vehicule": "/images/Duster-Dacia-24.png",
-                        "img_marque": "/images/Dacia-logo.png",
-                        "prix_jour": "500 DH/jour",
-                        "prix": "226.900,00 MAD",
-                        "reservations": []
-                    },
-                    {
-                        "id": 5,
-                        "Marque": "Nissan",
-                        "model": "Qashqai",
-                        "annee": "2024",
-                        "categorie": "SUV",
-                        "transmission": "automatique",
-                        "transaction": "achat",
-                        "carburant": "essence",
-                        "places": 5,
-                        "portes": 5,
-                        "climatisation": "oui",
-                        "couleur": "blanche",
-                        "kilometrage_Inclus": "150 km/jour",
-                        "options": "GPS, Caméra de recul",
-                        "img_vehicule": "/images/Nissan-Qashqai-2024-blanch.png",
-                        "img_marque": "/images/nissan_logo.png",
-                        "prix_jour": "500 DH/jour",
-                        "prix": " 648.000 MAD",
-                        "reservations": []
-                    },
-                    {
-                        "id": 8,
-                        "Marque": "Volkswagen",
-                        "model": "Golf GTI",
-                        "transaction": "achat",
-                        "annee": "2023",
-                        "categorie": "Compacte",
-                        "transmission": "manuel",
-                        "carburant": "diesel",
-                        "places": 5,
-                        "portes": 4,
-                        "climatisation": "oui",
-                        "couleur": "Blanc",
-                        "kilometrage_Inclus": "180 km/jour",
-                        "options": "Capteurs de stationnement, Écran tactile",
-                        "img_vehicule": "/images/Volkswagen-Golf-GTI-2023.png",
-                        "img_marque": "/images/volkswagen-logo.png",
-                        "prix": "550,000 MAD",
-                        "prix_jour": "500 DH/jour",
-                        "reservations": []
-                    },
-                    {
-                        "id": 9,
-                        "Marque": "Citroën",
-                        "transaction": "achat",
-                        "model": "C3",
-                        "annee": "2021",
-                        "categorie": "Citadine",
-                        "transmission": "manuel",
-                        "carburant": "essence",
-                        "places": 5,
-                        "portes": 5,
-                        "climatisation": "oui",
-                        "couleur": "Rouge",
-                        "kilometrage_Inclus": "150 km/jour",
-                        "options": "Aide au démarrage en côte, Bluetooth",
-                        "img_vehicule": "/images/citroen-c3-2020.png",
-                        "img_marque": "/images/Citroen_logo.png",
-                        "prix_jour": "480 DH/jour",
-                        "prix": " 648.000 MAD",
-                        "reservations": []
-                    }
-                ],
-                "composants": [
-                    {}
-                ]
-            },
-            {
-                "id": 2,
-                "name": "motors",
-                "elements": [
-                    {
-                        "id": 1,
-                        "marque": "",
-                        "modele": "",
-                        "carburant": "",
-                        "cylindree": "",
-                        "annee": "",
-                        "transaction": "achat",
-                        "prix": "",
-                        "img_vehicule": null,
-                        "puissance": {
-                            "chevaux": "",
-                            "kilowatts": "",
-                            "configuration": "",
-                            "alimentation": "",
-                            "turbo": ""
-                        },
-                        "consommation": {
-                            "urbain": "",
-                            "autoraute": "",
-                            "mixte": "",
-                            "unite": "",
-                            "norme": "",
-                            "refroidissement": "",
-                            "couleur": "",
-                            "prix_jour": ""
-                        },
-                        "transmission": ""
-                    }
-                ],
-                "composants": [
-                    {}
-                ]
-            },
-            {
-                "id": 3,
-                "name": "velos",
-                "elements": [
-                    {
-                        "id": 1,
-                        "marque": "",
-                        "modele": "",
-                        "transaction": "achat",
-                        "type": "",
-                        "vitesses": "",
-                        "cadre": {
-                            "materiau": "",
-                            "taille": "",
-                            "suspension": ""
-                        },
-                        "roues": {
-                            "taille": "",
-                            "materiau": "",
-                            "pneus": ""
-                        },
-                        "transmission": {
-                            "plateaux": "",
-                            "derailleur": ""
-                        },
-                        "freins": {
-                            "type": "",
-                            "marque": ""
-                        },
-                        "poids": "",
-                        "couleur": "",
-                        "prix": "",
-                        "img_vehicule": null
-                    }
-                ],
-                "composants": [
-                    {}
-                ]
-            }
-        ]
-    }
-]
+                "marque": "",
+                "modele": "",
+                "carburant": "",
+                "cylindree": "",
+                "annee": "",
+                "transaction": "achat",
+                "prix": "",
+                "img_vehicule": null,
+                "puissance": {
+                    "chevaux": "",
+                    "kilowatts": "",
+                    "configuration": "",
+                    "alimentation": "",
+                    "turbo": ""
+                },
+                "consommation": {
+                    "urbain": "",
+                    "autoraute": "",
+                    "mixte": "",
+                    "unite": "",
+                    "norme": "",
+                    "refroidissement": "",
+                    "couleur": "",
+                    "prix_jour": ""
+                },
+                "transmission": ""
+            }],
+            "composant": [{
+                    "type": "Sécurité",
+                    "name": "Casque intégral",
+                    "image": "/images/casque_integral.webp",
+                    "prix": "350 dh"
+                },
+                {
+                    "type": "Confort",
+                    "name": "Gants moto",
+                    "image": "/images/gants_moto.webp",
+                    "prix": "120 dh"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "velos",
+            "elements": [{
+                "id": 1,
+                "marque": "",
+                "modele": "",
+                "transaction": "achat",
+                "type": "",
+                "vitesses": "",
+                "cadre": {
+                    "materiau": "",
+                    "taille": "",
+                    "suspension": ""
+                },
+                "roues": {
+                    "taille": "",
+                    "materiau": "",
+                    "pneus": ""
+                },
+                "transmission": {
+                    "plateaux": "",
+                    "derailleur": ""
+                },
+                "freins": {
+                    "type": "",
+                    "marque": ""
+                },
+                "poids": "",
+                "couleur": "",
+                "prix": "",
+                "img_vehicule": null
+            }],
+            "composant": [{
+                    "type": "Sécurité",
+                    "name": "Casque vélo",
+                    "image": "/images/casque_velo.webp",
+                    "prix": "250 dh"
+                },
+                {
+                    "type": "Accessoire",
+                    "name": "Antivol",
+                    "image": "/images/antivol.webp",
+                    "prix": "150 dh"
+                }
+            ]
+        }
+    ]
+}]

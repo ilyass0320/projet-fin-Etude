@@ -4,7 +4,7 @@ import './login.css';
 import { AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { CiLogin } from "react-icons/ci";
-import show from '/public/images/thumb_400.jpg';
+import show from '/images/car-tyre-ono.jpg?url';
 import Headers from "../Navbar/Header";
 
 const Login = () => {

@@ -208,7 +208,7 @@ const Filtrage = () => {
     };
 
     return (
-        <div className="m-8 mt-[100px] flex flex-col items-center space-x-4">
+        <div className="m-8 mt-25 flex flex-col items-center space-x-4">
             <h1 className="font-extrabold text-4xl text-gray-900">Trouvez votre Véhicule</h1>
 
             {/* Filtres */}
@@ -405,7 +405,7 @@ const Filtrage = () => {
                         if (vehiculesDeTran.length === 0) {
                             return (
                                 <div className="flex flex-col items-center justify-center mt-10 gap-3">
-                                    <span className="text-5xl">🚫</span>
+                                    <span className="text-5xl text-gray-500">Aucune</span>
                                     <p className="text-center text-red-500 font-bold text-lg">
                                         Le type de transaction <span className="capitalize">« {selectedTransaction} »</span> n'existe pas dans la base de données.
                                     </p>

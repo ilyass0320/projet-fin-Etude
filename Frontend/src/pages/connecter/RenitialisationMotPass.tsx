@@ -1,4 +1,4 @@
-import show from '/images/thumb_400.jpg';
+import show from '/images/car-tyre-ono.jpg?url';
 import { useState } from "react"
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { MdEmail } from "react-icons/md";
