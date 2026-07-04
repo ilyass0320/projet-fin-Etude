@@ -85,14 +85,195 @@
                 },
                 {
                     "id": 2,
+                    "Marque": "Dacia",
+                    "model": "Sandero",
+                    "annee": "2024",
+                    "colors": [
+                        { "id": 1, "color": "#FFFFFF", "image": "/images/blanc_dacia_sandero.avif", "name": "Blanc" },
+                        { "id": 2, "color": "#000000", "image": "/images/noir_dacia_sandero.avif", "name": "Noir" },
+                        { "id": 3, "color": "#808080", "image": "/images/gris_dacia_sandero.avif", "name": "Gris" },
+                        { "id": 4, "color": "#8B0000", "image": "/images/rouge_dacia_sandero.avif", "name": "Rouge" }
+                    ],
+                    "images": [
+                        "/images/peugeot-208-removebg-preview.png",
+                        "/images/blanch_peugeot_208.avif",
+                        "/images/peugeot_1.jpg",
+                        "/images/peugeot_2.webp",
+                        "/images/peugeot_3.avif",
+                        "/images/peugeot_4.webp",
+                        "/images/image_Globa_peugeot_208.avif",
+                        "/images/.peugeot_208_6.jpg"
+                    ],
+                    "transmission": "manuel",
+                    "transaction": "achat",
+                    "carburant": "essence",
+                    "places": 5,
+                    "portes": 4,
+                    "climatisation": "oui",
+                    "couleur": "Blanc",
+                    "kilometrage_Inclus": "250km/jour",
+                    "prix_jour": "250 DH/jour",
+                    "prix_mois": "999 DH/mois",
+                    "Motorisation": "1.0L TCe",
+                    "Puissance_max": "90 ch",
+                    "Puissance_Fiscale": "5",
+                    "options": [
+                        "Bluetooth",
+                        "Vitres électriques",
+                        "Régulateur de vitesse"
+                    ],
+                    "img_vehicule": "/images/dacia-sandero-removebg-preview.webp",
+                    "img_marque": "/images/Dacia_logo.png",
+                    "prix": "129.900 MAD",
+                    "reservations": []
+                },
+                {
+                    "id": 3,
+                    "Marque": "Renault",
+                    "model": "Clio 5",
+                    "annee": "2024",
+                    "colors": [
+                        { "id": 1, "color": "#000000", "image": "/images/noir_renault_clio.avif", "name": "Noir" },
+                        { "id": 2, "color": "#FF4500", "image": "/images/orange_renault_clio.avif", "name": "Orange" },
+                        { "id": 3, "color": "#FFFFFF", "image": "/images/blanc_renault_clio.avif", "name": "Blanc" },
+                        { "id": 4, "color": "#0000FF", "image": "/images/bleu_renault_clio.avif", "name": "Bleu" }
+                    ],
+                    "images": [
+                        "/images/peugeot-208-removebg-preview.png",
+                        "/images/blanch_peugeot_208.avif",
+                        "/images/peugeot_1.jpg",
+                        "/images/peugeot_2.webp",
+                        "/images/peugeot_3.avif",
+                        "/images/peugeot_4.webp",
+                        "/images/image_Globa_peugeot_208.avif",
+                        "/images/.peugeot_208_6.jpg"
+                    ],
+                    "transmission": "automatique",
+                    "transaction": "achat",
+                    "carburant": "diesel",
+                    "places": 5,
+                    "portes": 4,
+                    "climatisation": "oui",
+                    "couleur": "Noir",
+                    "kilometrage_Inclus": "300km/jour",
+                    "prix_jour": "350 DH/jour",
+                    "prix_mois": "1399 DH/mois",
+                    "Motorisation": "1.5L dCi",
+                    "Puissance_max": "95 ch",
+                    "Puissance_Fiscale": "6",
+                    "options": [
+                        "GPS intégré",
+                        "Caméra de recul",
+                        "Bluetooth",
+                        "Climatisation automatique"
+                    ],
+                    "img_vehicule": "/images/renault-clio-removebg-preview.jpg",
+                    "img_marque": "/images/logo-renaut.webp",
+                    "prix": "168.500 MAD",
+                    "reservations": []
+                },
+                {
+                    "id": 4,
+                    "Marque": "Volkswagen",
+                    "model": "Golf 8",
+                    "annee": "2024",
+                    "colors": [
+                        { "id": 1, "color": "#FFFFFF", "image": "/images/blanc_vw_golf.avif", "name": "Blanc" },
+                        { "id": 2, "color": "#000000", "image": "/images/noir_vw_golf.avif", "name": "Noir" },
+                        { "id": 3, "color": "#808080", "image": "/images/gris_vw_golf.avif", "name": "Gris" },
+                        { "id": 4, "color": "#000080", "image": "/images/bleu_marine_vw_golf.avif", "name": "Bleu marine" }
+                    ],
+                    "images": [
+                        "/images/peugeot-208-removebg-preview.png",
+                        "/images/blanch_peugeot_208.avif",
+                        "/images/peugeot_1.jpg",
+                        "/images/peugeot_2.webp",
+                        "/images/peugeot_3.avif",
+                        "/images/peugeot_4.webp",
+                        "/images/image_Globa_peugeot_208.avif",
+                        "/images/.peugeot_208_6.jpg"
+                    ],
+                    "transmission": "automatique",
+                    "transaction": "achat",
+                    "carburant": "diesel",
+                    "places": 5,
+                    "portes": 4,
+                    "climatisation": "oui",
+                    "couleur": "Gris",
+                    "kilometrage_Inclus": "300km/jour",
+                    "prix_jour": "500 DH/jour",
+                    "prix_mois": "1899 DH/mois",
+                    "Motorisation": "2.0L TDI",
+                    "Puissance_max": "150 ch",
+                    "Puissance_Fiscale": "9",
+                    "options": [
+                        "GPS intégré",
+                        "Caméra 360°",
+                        "Toit ouvrant",
+                        "Sièges chauffants"
+                    ],
+                    "img_vehicule": "/images/vw-golf-removebg-preview.webp",
+                    "img_marque": "/images/volkswagen-logo.png",
+                    "prix": "245.000 MAD",
+                    "reservations": []
+                },
+                {
+                    "id": 5,
+                    "Marque": "Hyundai",
+                    "model": "Accent",
+                    "annee": "2023",
+                    "colors": [
+                        { "id": 1, "color": "#C0C0C0", "image": "/images/argent_hyundai_accent.avif", "name": "Argent" },
+                        { "id": 2, "color": "#000000", "image": "/images/noir_hyundai_accent.avif", "name": "Noir" },
+                        { "id": 3, "color": "#FFFFFF", "image": "/images/blanc_hyundai_accent.avif", "name": "Blanc" }
+                    ],
+                    "images": [
+                        "/images/peugeot-208-removebg-preview.png",
+                        "/images/blanch_peugeot_208.avif",
+                        "/images/peugeot_1.jpg",
+                        "/images/peugeot_2.webp",
+                        "/images/peugeot_3.avif",
+                        "/images/peugeot_4.webp",
+                        "/images/image_Globa_peugeot_208.avif",
+                        "/images/.peugeot_208_6.jpg"
+                    ],
+                    "transmission": "manuel",
+                    "transaction": "achat",
+                    "carburant": "essence",
+                    "places": 5,
+                    "portes": 4,
+                    "climatisation": "oui",
+                    "couleur": "Argent",
+                    "kilometrage_Inclus": "250km/jour",
+                    "prix_jour": "280 DH/jour",
+                    "prix_mois": "1099 DH/mois",
+                    "Motorisation": "1.4L MPI",
+                    "Puissance_max": "100 ch",
+                    "Puissance_Fiscale": "6",
+                    "options": [
+                        "Bluetooth",
+                        "Vitres électriques",
+                        "Direction assistée"
+                    ],
+                    "img_vehicule": "/images/hyundai-accent.webp",
+                    "img_marque": "/images/hyundai-logo.webp",
+                    "prix": "142.000 MAD",
+                    "reservations": []
+                }, {
+                    "id": 6,
                     "Marque": "Peugeot",
                     "model": "208",
                     "annee": "2024",
                     "color": "",
                     "images": [
-                        "/images/peugeot-208-1.png",
-                        "/images/peugeot-208-2.png",
-                        "/images/peugeot-208-3.png"
+                        "/images/peugeot-208-removebg-preview.png",
+                        "/images/blanch_peugeot_208.avif",
+                        "/images/peugeot_1.jpg",
+                        "/images/peugeot_2.webp",
+                        "/images/peugeot_3.avif",
+                        "/images/peugeot_4.webp",
+                        "/images/image_Globa_peugeot_208.avif",
+                        "/images/.peugeot_208_6.jpg"
                     ],
                     "transmission": "manuel",
                     "carburant": "diesel",
@@ -105,7 +286,7 @@
                     "options": null,
                     "img_vehicule": "/images/peugeot-208-removebg-preview.png",
                     "img_marque": "/images/logo-Peugeot.png",
-                    "prix": "175.960 MAD",
+                    "prix": "175,960 MAD",
                     "reservations": [{
                         "debut": "2025-09-20",
                         "fin": "2025-09-22",
@@ -114,7 +295,7 @@
                     }]
                 },
                 {
-                    "id": 3,
+                    "id": 7,
                     "Marque": "Audi",
                     "model": "Serie 3",
                     "annee": "2020",
@@ -132,7 +313,7 @@
                     "img_vehicule": "/images/audi-berline-serie3-voiture.png",
                     "img_marque": "/images/Audi-logo.png",
                     "prix_jour": "500 DH/jour",
-                    "prix": "648.000 MAD",
+                    "prix": "648,000 MAD",
                     "reservations": [{
                         "debut": "2025-09-20",
                         "fin": "2025-09-22",
@@ -141,7 +322,7 @@
                     }]
                 },
                 {
-                    "id": 4,
+                    "id": 8,
                     "Marque": "Renault",
                     "model": "Clio",
                     "annee": "",
@@ -158,7 +339,7 @@
                     "img_vehicule": "/images/Renault-clio-GT.png",
                     "img_marque": "/images/renault-logo.png",
                     "prix_jour": "480 DH/jour",
-                    "prix": "245.000 MAD",
+                    "prix": "245,000 MAD",
                     "reservations": [{
                             "debut": "2025-09-25",
                             "fin": "2025-09-28",
@@ -174,7 +355,7 @@
                     ]
                 },
                 {
-                    "id": 5,
+                    "id": 9,
                     "Marque": "BMW",
                     "model": "M4",
                     "annee": "2024",
@@ -190,11 +371,11 @@
                     "options": "Système de son premium, sièges chauffants, toit panoramique, caméra de recul",
                     "img_vehicule": "/images/2024-bmw-m4.png",
                     "img_marque": "/images/bmw-logo.png",
-                    "prix": "648.000 MAD",
+                    "prix": "648,000 MAD",
                     "reservations": []
                 },
                 {
-                    "id": 6,
+                    "id": 10,
                     "Marque": "Mercedes",
                     "model": "Classe A",
                     "annee": "2024",
@@ -211,11 +392,11 @@
                     "img_vehicule": "/images/mercedes-classe-a-2024.png",
                     "img_marque": "/images/Merc_logo.png",
                     "prix_jour": "700 DH/jour",
-                    "prix": "648.000 MAD",
+                    "prix": "648,000 MAD",
                     "reservations": []
                 },
                 {
-                    "id": 7,
+                    "id": 11,
                     "Marque": "Dacia",
                     "model": "Duster",
                     "annee": 2024,
@@ -236,7 +417,7 @@
                     "reservations": []
                 },
                 {
-                    "id": 8,
+                    "id": 12,
                     "Marque": "Nissan",
                     "model": "Qashqai",
                     "annee": "2024",
@@ -257,7 +438,7 @@
                     "reservations": []
                 },
                 {
-                    "id": 9,
+                    "id": 13,
                     "Marque": "Volkswagen",
                     "model": "Golf GTI",
                     "transaction": "achat",
@@ -278,7 +459,7 @@
                     "reservations": []
                 },
                 {
-                    "id": 10,
+                    "id": 14,
                     "Marque": "Citroën",
                     "transaction": "achat",
                     "model": "C3",

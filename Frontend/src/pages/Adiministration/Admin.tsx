@@ -11,7 +11,7 @@ export default function Admin() {
 
     const navigate = useNavigate();
 
-    // ✅ Si déjà connecté → rediriger vers le dashboard
+    // Si déjà connecté → rediriger vers le dashboard
     useEffect(() => {
         const token = localStorage.getItem("adminToken");
         const isLoggedIn = localStorage.getItem("isAdminLoggedIn") === "true";
@@ -40,13 +40,13 @@ export default function Admin() {
             const data = await response.json();
             console.log("=== Réponse login Admin ===", data);
 
-            // ✅ Sauvegarder token et infos admin
+            // Sauvegarder token et infos admin
             localStorage.setItem("adminToken", data.token);
             localStorage.setItem("isAdminLoggedIn", "true");
             localStorage.setItem("adminId", data.admin?.id || '');
             localStorage.setItem("admin", JSON.stringify(data.admin));
 
-            // ✅ Rediriger vers le dashboard
+            // Rediriger vers le dashboard
             navigate("/Admin");
 
         } catch (err: any) {
@@ -62,47 +62,20 @@ export default function Admin() {
 
             {/* Carte flip */}
             <div style={{ perspective: "1200px" }}>
-                <div
-                    className="relative cursor-pointer transition-all duration-700"
-                    style={{
-                        width: "420px",
-                        transformStyle: "preserve-3d",
-                        transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
-                    }}
-                >
-
+                <div className="relative cursor-pointer transition-all duration-700" style={{ width: "420px", transformStyle: "preserve-3d", transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",}}>
                     {/* ── FACE AVANT ── */}
-                    <div
-                        className="w-full flex flex-col justify-center items-center"
-                        style={{ backfaceVisibility: "hidden" }}
-                    >
-                        <img
-                            src={imag}
-                            alt="Logo"
-                            className="rounded-3xl m-3 w-full max-w-sm shadow-2xl"
-                        />
+                    <div className="w-full flex flex-col justify-center items-center" style={{ backfaceVisibility: "hidden" }}>
+                        <img src={imag} alt="Logo" className="rounded-3xl m-3 w-full max-w-sm shadow-2xl"/>
                         <p className="text-white text-sm font-light mb-3 tracking-widest uppercase opacity-80">
                             Espace Administrateur
                         </p>
-                        <button
-                            onClick={() => setIsFlipped(true)}
-                            type="button"
-                            className="bg-white text-blue-600 font-bold py-2 px-14 rounded-xl hover:bg-gray-100 transition duration-300 shadow-lg text-sm tracking-wide"
-                        >
+                        <button onClick={() => setIsFlipped(true)} type="button" className="bg-white text-blue-600 font-bold py-2 px-14 rounded-xl hover:bg-gray-100 transition duration-300 shadow-lg text-sm tracking-wide">
                             Se connecter
                         </button>
                     </div>
-
                     {/* ── FACE ARRIÈRE ── */}
-                    <div
-                        className="absolute top-0 left-0 w-full flex flex-col justify-center items-center h-full"
-                        style={{
-                            backfaceVisibility: "hidden",
-                            transform: "rotateY(180deg)",
-                        }}
-                    >
+                    <div className="absolute top-0 left-0 w-full flex flex-col justify-center items-center h-full" style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)",}}>
                         <div className="bg-white bg-opacity-10 backdrop-blur-sm border border-white border-opacity-30 rounded-3xl p-8 w-full shadow-2xl">
-
                             {/* En-tête */}
                             <div className="text-center mb-6">
                                 <h1 className="text-2xl font-extrabold text-blue-700 tracking-wide">
@@ -116,7 +89,7 @@ export default function Admin() {
                             {/* Message d'erreur */}
                             {error && (
                                 <div className="bg-red-500 bg-opacity-20 border border-red-300 border-opacity-50 text-white text-sm rounded-xl px-4 py-3 mb-4 text-center">
-                                    ⚠️ {error}
+                                    {error}
                                 </div>
                             )}
 

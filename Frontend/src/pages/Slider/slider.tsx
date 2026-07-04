@@ -21,15 +21,15 @@ const Slider = () => {
             <Sliderr {...settings} className="slider-container">
                 {dataProd.map((data) => (
                     <div key={data.id} >
-                        <div className=" h-[600px] flex flex-row justify-around items-center bg-[url('/images/gradient-blue.webp')] bg-cover brightness-40 text-white p-4">
-                            <div className="flex flex-col space-y-2 mt-[20px]">
+                        <div className=" h-150 flex flex-row justify-around items-center bg-[url('/images/vehieculeHeader.png')] bg-cover bg-bottom  brightness-70 text-white p-4">
+                            <div className="flex flex-col space-y-2 mt-5">
                                 <img src={data.img_Marque} alt="" width={100} height={100} className="" />
                                 <h1 className="text-5xl font-bold uppercase">{data.Marque}</h1>
                                 <h2 className="text-xl font-medium uppercase mb-20">{data.model}</h2>
-                                <span className="relative w-[200px] inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-gray-900">
+                                <span className="relative w-50 inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-gray-900">
                                     <span className="relative text-white text-2xl font-bold">{data.prix} DH</span>
                                 </span>
-                                <p className="w-[500px] h-[100px] text-prety">{data.description}</p>
+                                <p className="w-125 h-25 text-prety">{data.description}</p>
                             </div>
                             <div className="flex drop-shadow-2xl/50 drop-shadow-black">
                                 <Link to={`${data.Marque}-${data.model}`}>

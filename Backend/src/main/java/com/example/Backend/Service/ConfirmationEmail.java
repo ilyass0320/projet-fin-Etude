@@ -13,7 +13,7 @@ public class ConfirmationEmail {
     public void envoyerConfirmationMotDePasse(String email, String prenom) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(email);
-        message.setSubject("✅ Mot de passe modifié avec succès");
+        message.setSubject("Mot de passe modifié avec succès");
         message.setText(
                 "Bonjour " + prenom + ",\n\n" +
                         "Votre mot de passe a été réinitialisé avec succès.\n\n" +
@@ -21,6 +21,7 @@ public class ConfirmationEmail {
                         "contactez-nous immédiatement.\n\n" +
                         "Cordialement,\nL'équipe support"
         );
+        
         message.setFrom("ilyaachi03@gmail.com");
         mailSender.send(message);
     }

@@ -110,12 +110,19 @@ const Filtrage = () => {
 
         return (
             <div key={id} className="p-1 mb-4 border rounded-md shadow-xl">
-                <div className="relative flex justify-center h-34 mb-3 border border-none bg-gray-200 rounded-xl">
-                    <img src={img_vehicule} alt="img_vehicule" className="hoverImg" width={200} height={200} />
-                    <div className="top-0 left-0 absolute m-1 z-10">
-                        <img src={img_marque} alt="img_marque" width={40} height={40} />
-                    </div>
-                </div>
+              <div className="relative mb-3 border border-none bg-gray-200 rounded-xl overflow-hidden">
+                <img
+        src={img_vehicule}
+        alt="img_vehicule"
+        className="w-full h-40 object-cover"
+        />
+        <div className="top-0 left-0 absolute m-1 z-10">
+        <img
+            src={img_marque}
+            alt="img_marque"
+            className="w-10 h-10 object-cover bg-white rounded-full p-1 shadow"
+        /></div>
+        </div>
                 <div className="flex flex-row justify-between">
                     <span className="border font-bold px-4 text-xl rounded-xl bg-gray-500 text-white py-1">
                         {transaction || "Non défini"}
@@ -142,7 +149,7 @@ const Filtrage = () => {
                 {/* Affichage conflit de réservation */}
                 {conflit && (
                     <div className="mt-2 p-2 bg-red-100 border border-red-400 rounded-xl text-red-700 text-sm">
-                        ⚠️ Déjà réservé du <strong>{conflit.debut}</strong> au <strong>{conflit.fin}</strong>
+                        Déjà réservé du <strong>{conflit.debut}</strong> au <strong>{conflit.fin}</strong>
                     </div>
                 )}
 

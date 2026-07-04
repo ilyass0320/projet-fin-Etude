@@ -1,15 +1,15 @@
 package com.example.Backend.Service;
 
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
 @RequiredArgsConstructor
 public class ServiceEmail {
-    private final JavaMailSender mailSender;
+    private  JavaMailSender mailSender;
     public void sendPasswordResetEmail(String toEmail, String token) {
         String resetLink = "http://localhost:5173/renitialiser-Mot-Pass?token=" + token;
 

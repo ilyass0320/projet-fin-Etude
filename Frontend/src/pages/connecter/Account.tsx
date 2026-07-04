@@ -9,6 +9,7 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import { MdFavoriteBorder } from "react-icons/md";
 import { RiShutDownLine } from 'react-icons/ri';
 import { useCart } from "../content/CarteContent";
+import { MdNotifications } from 'react-icons/md';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 type CommandeStatut = "en_cours" | "echoue" | "termine";
@@ -25,6 +26,16 @@ type Commande = {
     dateCommande: string; // ISO string
 };
 
+type NotificationItem = {
+    id: number;
+    destinataire: string;
+    sujet: string;
+    contenu: string;
+    type: string;
+    dateEnvoi: string; // ISO string
+    luClient: boolean;
+};
+
 // ─── localStorage helpers ─────────────────────────────────────────────────────
 const COMMANDES_KEY = "commandes_client";
 
@@ -37,6 +48,69 @@ const loadCommandes = (): Commande[] => {
 
 const saveCommandes = (commandes: Commande[]) => {
     localStorage.setItem(COMMANDES_KEY, JSON.stringify(commandes));
+};
+
+// ─── Notifications client (composant à part, hors du render de Account) ──────
+const ClientNotifications = ({ clientEmail }: { clientEmail: string }) => {
+    const [notifications, setNotifications] = useState<NotificationItem[]>([]);
+    const [open, setOpen] = useState(false);
+    const [loadingNotif, setLoadingNotif] = useState(false);
+
+    useEffect(() => {
+        if (!clientEmail) return;
+        setLoadingNotif(true);
+        axios
+            .get<NotificationItem[]>(`http://localhost:8080/api/notifications/client/${clientEmail}`)
+            .then(res => setNotifications(res.data))
+            .catch(() => setNotifications([]))
+            .finally(() => setLoadingNotif(false));
+    }, [clientEmail]);
+
+    const nonLues = notifications.filter(n => !n.luClient).length;
+
+    const ouvrir = () => {
+        setOpen(!open);
+        if (!open) {
+            // marquer comme lu à l'ouverture
+            notifications.forEach(n => {
+                if (!n.luClient) {
+                    axios.put(`http://localhost:8080/api/notifications/client/${n.id}/lu`).catch(() => {});
+                }
+            });
+            setNotifications(prev => prev.map(n => ({ ...n, luClient: true })));
+        }
+    };
+
+    return (
+        <div className="relative inline-block">
+            <button onClick={ouvrir} className="relative" type="button">
+                <MdNotifications size={26} className="text-white" />
+                {nonLues > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full px-1.5">
+                        {nonLues}
+                    </span>
+                )}
+            </button>
+
+            {open && (
+                <div className="absolute right-0 mt-2 w-80 bg-white shadow-lg rounded-lg border max-h-96 overflow-y-auto z-50 text-black">
+                    {loadingNotif ? (
+                        <p className="p-3 text-sm text-gray-500">Chargement...</p>
+                    ) : notifications.length === 0 ? (
+                        <p className="p-3 text-sm text-gray-500">Aucun message</p>
+                    ) : (
+                        notifications.map(n => (
+                            <div key={n.id} className="p-3 border-b">
+                                <p className="font-semibold text-sm text-gray-800">{n.sujet}</p>
+                                <p className="text-xs text-gray-600 mt-1">{n.contenu}</p>
+                                <p className="text-xs text-gray-400 mt-1">{new Date(n.dateEnvoi).toLocaleString()}</p>
+                            </div>
+                        ))
+                    )}
+                </div>
+            )}
+        </div>
+    );
 };
 
 // ─── Composant principal ──────────────────────────────────────────────────────
@@ -374,6 +448,9 @@ const Account = () => {
                     {activeMenu === "notif" && (
                         <div>
                             <h1 className="text-center text-xl font-semibold underline decoration-gray-200">Notifications</h1>
+                            <div className="flex justify-center mt-4">
+                                <ClientNotifications clientEmail={formData.email} />
+                            </div>
                         </div>
                     )}
 
@@ -415,7 +492,7 @@ const Account = () => {
                                                     )}
                                                 </div>
                                                 <div className="flex flex-col gap-2">
-                                                    {/* ✅ Commander → statut "en_cours" + retire du panier + va dans Commandes */}
+                                                    {/*  Commander → statut "en_cours" + retire du panier + va dans Commandes */}
                                                     {!expire && (
                                                         <button
                                                             className="bg-gray-900 text-white px-3 py-1 rounded-lg text-sm hover:bg-blue-700 transition-colors"

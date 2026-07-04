@@ -1,5 +1,7 @@
 package com.example.Backend.Entity;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -8,8 +10,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -22,6 +22,8 @@ public class Notiification {
     private Long id;
     private String message; //contenu du message
     private String email; //email du clients
-    private boolean Vu=false ; //pour savoir si elle est vu ou non
+    private boolean luClient=false ; //pour savoir si client est vu ou non
+    private boolean luAdmin=false ; //pour savoir si admin est vu ou non
     private LocalDateTime dateTime = LocalDateTime.now();
+
 }
